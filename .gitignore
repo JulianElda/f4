@@ -12,7 +12,7 @@
 /build
 
 # compiled css
-.css
+*.css
 
 # misc
 .DS_Store

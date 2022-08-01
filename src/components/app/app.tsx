@@ -1,32 +1,34 @@
 import { useState } from "react";
 
 import { ActionType } from "components/action/action";
-import ActionList from "components/actionlist/actionlist";
+import ActionList, {
+  STANDARD_ROTATION,
+} from "components/actionlist/actionlist";
 import Calculator from "components/calculator/calculator";
+import Header from "components/header/header";
 import Sequence from "components/sequence/sequence";
 
 export default function App() {
-  const [actions, setActions] = useState<ActionType[]>([]);
+  const [actions, setActions] = useState<ActionType[]>(STANDARD_ROTATION);
 
+  // add new action at the end
   const addActions = function (newAction: ActionType) {
     setActions((prevActions: ActionType[]) =>
       prevActions.slice().concat(newAction)
     );
   };
 
-  return (
-    <div className="min-h-full flex flex-col">
-      <div className="mx-auto max-w-2xl">
-        <h1 className="font-mono text-2xl text-center mt-1 mb-4">f4</h1>
-        <div className="bg-white shadow rounded">
-          <div className="">
-            <Sequence actions={actions} />
-          </div>
-          <div className="">
-            <Calculator actions={actions} />
-          </div>
-        </div>
+  // remove action of specified index
+  const removeActions = function (index: number) {
+    setActions((prevActions) => prevActions.filter((_, i) => i !== index));
+  };
 
+  return (
+    <div className="min-h-full flex flex-col max-w-2xl mx-auto py-4">
+      <div className="w-full">
+        <Header />
+        <Sequence actions={actions} clickAction={removeActions} />
+        <Calculator actions={actions} />
         <ActionList clickAction={addActions} />
       </div>
     </div>

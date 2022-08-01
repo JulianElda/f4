@@ -1,13 +1,36 @@
 import Action, { ActionType } from "components/action/action";
 
-export default function Sequence(props) {
-  const clickAction = function () {};
+type SequenceProps = {
+  actions: ActionType[];
+  clickAction: (index: number) => void;
+};
 
-  const getSequenceContent = function () {
-    return props.actions.slice().map(function (action: ActionType) {
-      return <Action action={action} click={clickAction} key={Math.random()} />;
-    });
+/**
+ * show specified line
+ */
+export default function Sequence(props: SequenceProps) {
+  // loop through given actions
+  const getSequenceContent = function (): React.ReactNode {
+    let content: React.ReactNode[] = [];
+    for (let i = 0; i < props.actions.length; i++) {
+      content.push(
+        <Action
+          action={props.actions[i]}
+          click={(_action: ActionType) => props.clickAction(i)}
+          key={Math.random() * 100}
+        />
+      );
+    }
+
+    return content;
   };
 
-  return <div className="space-x-2">{getSequenceContent()}</div>;
+  return (
+    <div className="my-4">
+      <label className="font-semibold">Casts</label>
+      <div className="bg-white shadow rounded space-x-2 mt-1 p-2">
+        {getSequenceContent()}
+      </div>
+    </div>
+  );
 }

@@ -22,7 +22,7 @@ export enum ElementalStates {
   NONE = "NONE",
 }
 
-export const ELEMENTAL_MULTIPLIERS = {
+export const MULTIPLIER_POTENCY = {
   [ActionElements.FIRE]: {
     [ElementalStates.NONE]: 1,
     [ElementalStates.AF1]: 1.4,
@@ -52,7 +52,37 @@ export const ELEMENTAL_MULTIPLIERS = {
   },
 };
 
-export const f1: JobActionType = {
+export const MULTIPLIER_CAST = {
+  [ActionElements.FIRE]: {
+    [ElementalStates.NONE]: 1,
+    [ElementalStates.AF1]: 1,
+    [ElementalStates.AF2]: 1,
+    [ElementalStates.AF3]: 1,
+    [ElementalStates.UI1]: 1,
+    [ElementalStates.UI2]: 1,
+    [ElementalStates.UI3]: 0.5,
+  },
+  [ActionElements.ICE]: {
+    [ElementalStates.NONE]: 1,
+    [ElementalStates.AF1]: 1,
+    [ElementalStates.AF2]: 1,
+    [ElementalStates.AF3]: 0.5,
+    [ElementalStates.UI1]: 1,
+    [ElementalStates.UI2]: 1,
+    [ElementalStates.UI3]: 1,
+  },
+  [ActionElements.UNASPECTED]: {
+    [ElementalStates.NONE]: 1,
+    [ElementalStates.AF1]: 1,
+    [ElementalStates.AF2]: 1,
+    [ElementalStates.AF3]: 1,
+    [ElementalStates.UI1]: 1,
+    [ElementalStates.UI2]: 1,
+    [ElementalStates.UI3]: 1,
+  },
+};
+
+export const F1: JobActionType = {
   id: "f1",
   name: "Fire I",
   element: ActionElements.FIRE,
@@ -60,7 +90,7 @@ export const f1: JobActionType = {
   cast: 3500,
 };
 
-export const f3: JobActionType = {
+export const F3: JobActionType = {
   id: "f3",
   name: "Fire III",
   element: ActionElements.FIRE,
@@ -68,7 +98,7 @@ export const f3: JobActionType = {
   cast: 3500,
 };
 
-export const f4: JobActionType = {
+export const F4: JobActionType = {
   id: "f4",
   name: "Fire IV",
   element: ActionElements.FIRE,
@@ -76,7 +106,7 @@ export const f4: JobActionType = {
   cast: 2800,
 };
 
-export const d: JobActionType = {
+export const D: JobActionType = {
   id: "d",
   name: "Despair",
   element: ActionElements.FIRE,
@@ -84,7 +114,7 @@ export const d: JobActionType = {
   cast: 3000,
 };
 
-export const b3: JobActionType = {
+export const B3: JobActionType = {
   id: "b3",
   name: "Blizzard III",
   element: ActionElements.ICE,
@@ -92,7 +122,7 @@ export const b3: JobActionType = {
   cast: 3500,
 };
 
-export const b4: JobActionType = {
+export const B4: JobActionType = {
   id: "b4",
   name: "Blizzard IV",
   element: ActionElements.ICE,
@@ -100,10 +130,13 @@ export const b4: JobActionType = {
   cast: 2500,
 };
 
-export const pd: JobActionType = {
+export const PD: JobActionType = {
   id: "pd",
   name: "Paradox",
   element: ActionElements.UNASPECTED,
   potency: 500,
   cast: 2500,
 };
+
+export const CASTER_TAX: number = 100;
+export const OGCD_CLIP: number = 700;

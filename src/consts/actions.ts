@@ -7,39 +7,39 @@ import img_b3 from "assets/images/b3.png";
 import img_b4 from "assets/images/b4.png";
 
 import { ActionType } from "components/action/action";
-import { f1, f3, f4, b3, b4, d, pd } from "consts/jobactions";
+import { F1, F3, F4, B3, B4, D, PD } from "consts/jobactions";
 
 export const f1_action: ActionType = {
-  ...f1,
+  ...F1,
   icon: img_f1,
 };
 
 export const f3_action: ActionType = {
-  ...f3,
+  ...F3,
   icon: img_f3,
 };
 
 export const f4_action: ActionType = {
-  ...f4,
+  ...F4,
   icon: img_f4,
 };
 
 export const d_action: ActionType = {
-  ...d,
+  ...D,
   icon: img_d,
 };
 
 export const b3_action: ActionType = {
-  ...b3,
+  ...B3,
   icon: img_b3,
 };
 
 export const b4_action: ActionType = {
-  ...b4,
+  ...B4,
   icon: img_b4,
 };
 
 export const pd_action: ActionType = {
-  ...pd,
+  ...PD,
   icon: img_pd,
 };
