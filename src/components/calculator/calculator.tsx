@@ -97,9 +97,9 @@ export default function Calculator(props: CalculatorProps) {
   return (
     <>
       <div className="bg-white shadow rounded my-4 p-2">
-        <p>{potency} potency</p>
-        <p>{totalTime} s</p>
-        <p>{(potency / totalTime).toFixed(2)} pps</p>
+        <p className="font-mono">{potency} potency</p>
+        <p className="font-mono">{totalTime} s</p>
+        <p className="font-mono">{(potency / totalTime).toFixed(2)} pps</p>
       </div>
     </>
   );

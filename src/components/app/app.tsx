@@ -6,6 +6,7 @@ import ActionList, {
 } from "components/actionlist/actionlist";
 import Calculator from "components/calculator/calculator";
 import Header from "components/header/header";
+import References from "components/references/references";
 import Sequence from "components/sequence/sequence";
 
 export default function App() {
@@ -30,6 +31,7 @@ export default function App() {
         <Sequence actions={actions} clickAction={removeActions} />
         <Calculator actions={actions} />
         <ActionList clickAction={addActions} />
+        <References />
       </div>
     </div>
   );
