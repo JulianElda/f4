@@ -9,6 +9,7 @@ import Header from "components/header/header";
 import Preset from "components/preset/preset";
 import References from "components/references/references";
 import Sequence from "components/sequence/sequence";
+import SpSCalculator from "components/spscalculator/spscalculator";
 
 export default function App() {
   const [actions, setActions] = useState<ActionType[]>(L1_STANDARD_ROTATION);
@@ -26,14 +27,21 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-full flex flex-col max-w-lg mx-auto py-4">
+    <div className="min-h-full flex flex-col max-w-2xl mx-auto py-4">
       <div className="w-full">
         <Header />
-        <ActionList clickAction={addActions} />
-        <Sequence actions={actions} clickAction={removeActions} />
-        <Calculator actions={actions} />
-        <Preset setActions={setActions} />
-        <References />
+        <div className="grid grid-cols-2 md:space-x-8">
+          <div className="col-span-2 md:col-span-1">
+            <ActionList clickAction={addActions} />
+            <Sequence actions={actions} clickAction={removeActions} />
+            <Calculator actions={actions} />
+          </div>
+          <div className="col-span-2 md:col-span-1">
+            <SpSCalculator />
+            <Preset setActions={setActions} />
+            <References />
+          </div>
+        </div>
       </div>
     </div>
   );

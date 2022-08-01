@@ -13,6 +13,13 @@ export default function Preset(props: PresetProps) {
         <p
           className={PRESET_STYLE}
           onClick={() => {
+            props.setActions([]);
+          }}>
+          Clear
+        </p>
+        <p
+          className={PRESET_STYLE}
+          onClick={() => {
             props.setActions(L1_STANDARD_ROTATION);
           }}>
           (1) Standard without F3P

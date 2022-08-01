@@ -18,7 +18,7 @@ export default function Action(props: ActionProps) {
     <img
       width={WIDTH}
       height={HEIGHT}
-      className="inline"
+      className="inline cursor-pointer"
       src={props.action.icon}
       alt={props.action.name}
       onClick={() => props.click(props.action)}
