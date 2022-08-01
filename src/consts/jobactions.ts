@@ -83,7 +83,7 @@ export const MULTIPLIER_CAST = {
 };
 
 export const F1: JobActionType = {
-  id: "f1",
+  id: "F1",
   name: "Fire I",
   element: ActionElements.FIRE,
   potency: 260,
@@ -91,7 +91,7 @@ export const F1: JobActionType = {
 };
 
 export const F3: JobActionType = {
-  id: "f3",
+  id: "F3",
   name: "Fire III",
   element: ActionElements.FIRE,
   potency: 260,
@@ -99,7 +99,7 @@ export const F3: JobActionType = {
 };
 
 export const F4: JobActionType = {
-  id: "f4",
+  id: "F4",
   name: "Fire IV",
   element: ActionElements.FIRE,
   potency: 310,
@@ -107,7 +107,7 @@ export const F4: JobActionType = {
 };
 
 export const D: JobActionType = {
-  id: "d",
+  id: "Desp",
   name: "Despair",
   element: ActionElements.FIRE,
   potency: 340,
@@ -115,7 +115,7 @@ export const D: JobActionType = {
 };
 
 export const B3: JobActionType = {
-  id: "b3",
+  id: "B3",
   name: "Blizzard III",
   element: ActionElements.ICE,
   potency: 260,
@@ -123,7 +123,7 @@ export const B3: JobActionType = {
 };
 
 export const B4: JobActionType = {
-  id: "b4",
+  id: "B4",
   name: "Blizzard IV",
   element: ActionElements.ICE,
   potency: 310,
@@ -131,7 +131,7 @@ export const B4: JobActionType = {
 };
 
 export const PD: JobActionType = {
-  id: "pd",
+  id: "PD",
   name: "Paradox",
   element: ActionElements.UNASPECTED,
   potency: 500,

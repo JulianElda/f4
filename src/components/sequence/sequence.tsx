@@ -25,12 +25,21 @@ export default function Sequence(props: SequenceProps) {
     return content;
   };
 
+  const getLineNotation = function (): React.ReactNode {
+    return props.actions
+      .map(function (action: ActionType) {
+        return action.id;
+      })
+      .join(" ");
+  };
+
   return (
     <div className="my-4">
       <label className="font-semibold">Casts</label>
       <div className="bg-white shadow rounded space-x-2 mt-1 p-2">
         {getSequenceContent()}
       </div>
+      <p className="font-mono text-sm mx-2">{getLineNotation()}</p>
     </div>
   );
 }
