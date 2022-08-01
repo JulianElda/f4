@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { PD, JobActionType } from "consts/jobactions";
+import { B3, F3, PD, JobActionType } from "consts/jobactions";
 import { ActionType } from "components/action/action";
 import {
   CASTER_TAX,
@@ -13,6 +13,7 @@ type CalculatorProps = {
   actions: ActionType[];
 };
 
+// add SpS calculator later
 const GCD_RECAST: number = 2500;
 
 export default function Calculator(props: CalculatorProps) {
@@ -29,13 +30,20 @@ export default function Calculator(props: CalculatorProps) {
       let gcdPotency =
         action.potency * MULTIPLIER_POTENCY[action.element][currentElement];
 
-      totalPotency += gcdPotency;
+      // dont count filler spells
+      if (action.filler) {
+        totalPotency += 0;
+      } else {
+        totalPotency += gcdPotency;
+      }
 
       switch (action.id) {
-        case "f3":
+        // F3 always changes to AF3
+        case F3.id:
           currentElement = ElementalStates.AF3;
           break;
-        case "b3":
+        // B3 always changes to UI3
+        case B3.id:
           currentElement = ElementalStates.UI3;
           break;
       }
@@ -61,8 +69,12 @@ export default function Calculator(props: CalculatorProps) {
         castTime = 0;
       }
 
+      // dont count filler spells
+      if (action.filler) {
+        totalTime += 0;
+      }
       // f4, despair
-      if (castTime > GCD_RECAST) {
+      else if (castTime > GCD_RECAST) {
         totalTime += castTime + CASTER_TAX;
       }
       // fire pd, b4

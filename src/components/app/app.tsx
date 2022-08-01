@@ -25,7 +25,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-full flex flex-col max-w-2xl mx-auto py-4">
+    <div className="min-h-full flex flex-col max-w-lg mx-auto py-4">
       <div className="w-full">
         <Header />
         <Sequence actions={actions} clickAction={removeActions} />

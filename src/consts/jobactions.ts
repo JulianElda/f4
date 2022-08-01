@@ -1,9 +1,28 @@
+// when you cast spell longer than base GCD
+export const CASTER_TAX: number = 100;
+
+// when you clip oGCD between GCDs
+export const OGCD_CLIP: number = 700;
+
 export type JobActionType = {
+  // shown in sequence lines
   id: string;
+
+  // full skill name
   name: string;
+
+  // fire, ice, unaspected
   element: ActionElements;
+
+  // potency
   potency: number;
+
+  // cast time in ms
   cast: number;
+
+  // whether it counts as a "filler" gcd for transpose lines
+  // e.g. xeno, t3p
+  filler: boolean;
 };
 
 export enum ActionElements {
@@ -88,6 +107,7 @@ export const F1: JobActionType = {
   element: ActionElements.FIRE,
   potency: 260,
   cast: 3500,
+  filler: false,
 };
 
 export const F3: JobActionType = {
@@ -96,6 +116,7 @@ export const F3: JobActionType = {
   element: ActionElements.FIRE,
   potency: 260,
   cast: 3500,
+  filler: false,
 };
 
 export const F4: JobActionType = {
@@ -104,6 +125,7 @@ export const F4: JobActionType = {
   element: ActionElements.FIRE,
   potency: 310,
   cast: 2800,
+  filler: false,
 };
 
 export const D: JobActionType = {
@@ -112,6 +134,7 @@ export const D: JobActionType = {
   element: ActionElements.FIRE,
   potency: 340,
   cast: 3000,
+  filler: false,
 };
 
 export const B3: JobActionType = {
@@ -120,6 +143,7 @@ export const B3: JobActionType = {
   element: ActionElements.ICE,
   potency: 260,
   cast: 3500,
+  filler: false,
 };
 
 export const B4: JobActionType = {
@@ -128,6 +152,7 @@ export const B4: JobActionType = {
   element: ActionElements.ICE,
   potency: 310,
   cast: 2500,
+  filler: false,
 };
 
 export const PD: JobActionType = {
@@ -136,7 +161,25 @@ export const PD: JobActionType = {
   element: ActionElements.UNASPECTED,
   potency: 500,
   cast: 2500,
+  filler: false,
 };
 
-export const CASTER_TAX: number = 100;
-export const OGCD_CLIP: number = 700;
+// filler spells
+
+export const XENO: JobActionType = {
+  id: "XENO",
+  name: "Xenoglossy",
+  element: ActionElements.UNASPECTED,
+  potency: 760,
+  cast: 0,
+  filler: true,
+};
+
+export const T3P: JobActionType = {
+  id: "T3P",
+  name: "Thunder 3 Proc",
+  element: ActionElements.UNASPECTED,
+  potency: 750, // initial 50pot, (35pot for 30s) * 2
+  cast: 0,
+  filler: true,
+};

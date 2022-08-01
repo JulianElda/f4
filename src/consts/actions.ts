@@ -5,9 +5,11 @@ import img_d from "assets/images/d.png";
 import img_pd from "assets/images/pd.png";
 import img_b3 from "assets/images/b3.png";
 import img_b4 from "assets/images/b4.png";
+import img_t3 from "assets/images/t3.png";
+import img_xeno from "assets/images/xeno.png";
 
 import { ActionType } from "components/action/action";
-import { F1, F3, F4, B3, B4, D, PD } from "consts/jobactions";
+import { F1, F3, F4, B3, B4, D, PD, XENO, T3P } from "consts/jobactions";
 
 export const f1_action: ActionType = {
   ...F1,
@@ -42,4 +44,14 @@ export const b4_action: ActionType = {
 export const pd_action: ActionType = {
   ...PD,
   icon: img_pd,
+};
+
+export const t3p_action: ActionType = {
+  ...T3P,
+  icon: img_t3,
+};
+
+export const xeno_action: ActionType = {
+  ...XENO,
+  icon: img_xeno,
 };
