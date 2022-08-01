@@ -18,20 +18,6 @@ type ActionListProps = {
 // starting actions, standard line
 // in order:
 // B3 B4 PD F3 3xF4 PD 3xF4 Desp
-export const STANDARD_ROTATION: ActionType[] = [
-  b3_action,
-  b4_action,
-  pd_action,
-  f3_action,
-  f4_action,
-  f4_action,
-  f4_action,
-  pd_action,
-  f4_action,
-  f4_action,
-  f4_action,
-  d_action,
-];
 
 export default function ActionList(props: ActionListProps) {
   return (

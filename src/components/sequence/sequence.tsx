@@ -36,10 +36,21 @@ export default function Sequence(props: SequenceProps) {
   return (
     <div className="my-4">
       <label className="font-semibold">Casts</label>
-      <div className="bg-white shadow rounded space-x-2 mt-1 p-2">
-        {getSequenceContent()}
-      </div>
-      <p className="font-mono text-sm mx-2">{getLineNotation()}</p>
+      {props.actions.length === 0 && (
+        <>
+          <div className="bg-white shadow rounded space-x-2 mt-1 p-2">
+            <p>Nothing specified, add action below</p>
+          </div>
+        </>
+      )}
+      {props.actions.length >= 1 && (
+        <>
+          <div className="bg-white shadow rounded space-x-2 mt-1 p-2">
+            {getSequenceContent()}
+          </div>
+          <p className="font-mono text-sm mx-2">{getLineNotation()}</p>
+        </>
+      )}
     </div>
   );
 }

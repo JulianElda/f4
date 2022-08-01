@@ -87,10 +87,10 @@ export default function Calculator(props: CalculatorProps) {
       }
 
       switch (action.id) {
-        case "f3":
+        case F3.id:
           currentElement = ElementalStates.AF3;
           break;
-        case "b3":
+        case B3.id:
           currentElement = ElementalStates.UI3;
           break;
       }
@@ -108,11 +108,13 @@ export default function Calculator(props: CalculatorProps) {
 
   return (
     <>
-      <div className="bg-white shadow rounded my-4 p-2">
-        <p className="font-mono">{potency} potency</p>
-        <p className="font-mono">{totalTime} s</p>
-        <p className="font-mono">{(potency / totalTime).toFixed(2)} pps</p>
-      </div>
+      {props.actions.length >= 1 && (
+        <div className="bg-white shadow rounded my-4 p-2">
+          <p className="font-mono">{potency} potency</p>
+          <p className="font-mono">{totalTime} s</p>
+          <p className="font-mono">{(potency / totalTime).toFixed(2)} pps</p>
+        </div>
+      )}
     </>
   );
 }
