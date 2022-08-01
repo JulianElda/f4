@@ -1,7 +1,8 @@
 {
   "name": "f4",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "homepage": "https://julianelda.github.io/f4/",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
