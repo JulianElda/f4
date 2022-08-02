@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import { L1_STANDARD_ROTATION } from "consts/lines";
-
 import { ActionType } from "components/action/action";
 import ActionList from "components/actionlist/actionlist";
 import Calculator from "components/calculator/calculator";
@@ -12,7 +10,8 @@ import Sequence from "components/sequence/sequence";
 import SpSCalculator from "components/spscalculator/spscalculator";
 
 export default function App() {
-  const [actions, setActions] = useState<ActionType[]>(L1_STANDARD_ROTATION);
+  const [actions, setActions] = useState<ActionType[]>([]);
+  const [sps, setSps] = useState<number>(380);
 
   // add new action at the end
   const addActions = function (newAction: ActionType) {
@@ -34,10 +33,10 @@ export default function App() {
           <div className="col-span-2 md:col-span-1">
             <ActionList clickAction={addActions} />
             <Sequence actions={actions} clickAction={removeActions} />
-            <Calculator actions={actions} />
+            <Calculator actions={actions} sps={sps} />
           </div>
           <div className="col-span-2 md:col-span-1">
-            <SpSCalculator />
+            <SpSCalculator setSps={setSps} />
             <Preset setActions={setActions} />
             <References />
           </div>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { calculateRecast } from "consts/utils";
 
 import {
   CASTER_TAX,
@@ -12,17 +13,15 @@ import Details, { DetailedAction } from "components/details/details";
 
 type CalculatorProps = {
   actions: ActionType[];
+  sps: number;
 };
-
-// add SpS calculator later
-const GCD_RECAST: number = 2500;
 
 export default function Calculator(props: CalculatorProps) {
   const [potency, setPotency] = useState<number>(0);
   const [totalTime, setTotalTime] = useState<number>(0);
   const [detailedActions, setDetailedActions] = useState<DetailedAction[]>([]);
 
-  const startCalculation = function (jobActions: JobActionType[]) {
+  const startCalculation = function (jobActions: JobActionType[], sps: number) {
     let currentElement: ElementalStates = ElementalStates.AF3;
     let totalPotency: number = 0;
     let totalTime: number = 0;
@@ -35,8 +34,9 @@ export default function Calculator(props: CalculatorProps) {
         MULTIPLIER_POTENCY[action.element][currentElement];
       let castMultiplier: number =
         MULTIPLIER_CAST[action.element][currentElement];
+      let recast = calculateRecast(sps, action.cast) * 1000;
 
-      let castTime: number = action.cast * castMultiplier;
+      let castTime: number = recast * castMultiplier;
       let gcdPotency: number = action.potency * potencyMultiplier;
 
       if (
@@ -57,7 +57,7 @@ export default function Calculator(props: CalculatorProps) {
         };
       }
       // f4, despair
-      else if (castTime > GCD_RECAST) {
+      else if (castTime > recast) {
         totalPotency += gcdPotency;
         totalTime += castTime + CASTER_TAX;
 
@@ -67,15 +67,16 @@ export default function Calculator(props: CalculatorProps) {
           potency: action.potency,
           adjustedPotency: gcdPotency,
           potencyMultiplier: potencyMultiplier,
-          cast: action.cast,
+          cast: recast,
           adjustedCast: castTime + CASTER_TAX,
           castMultiplier: castMultiplier,
         };
       }
-      // fire pd, b4
-      else if (castTime === GCD_RECAST) {
+      // f3, b3
+      else if (castTime < recast) {
         totalPotency += gcdPotency;
-        totalTime += GCD_RECAST + CASTER_TAX;
+        // base gcd
+        totalTime += calculateRecast(sps, 2500) * 1000;
 
         detailedAction = {
           name: action.name,
@@ -83,15 +84,15 @@ export default function Calculator(props: CalculatorProps) {
           potency: action.potency,
           adjustedPotency: gcdPotency,
           potencyMultiplier: potencyMultiplier,
-          cast: action.cast,
-          adjustedCast: GCD_RECAST + CASTER_TAX,
+          cast: calculateRecast(sps, 2500) * 1000,
+          adjustedCast: castTime,
           castMultiplier: castMultiplier,
         };
       }
-      // f3, b3, ice pd
-      else {
+      // fire pd, b4
+      else if (castTime === recast) {
         totalPotency += gcdPotency;
-        totalTime += GCD_RECAST;
+        totalTime += recast + CASTER_TAX;
 
         detailedAction = {
           name: action.name,
@@ -99,8 +100,24 @@ export default function Calculator(props: CalculatorProps) {
           potency: action.potency,
           adjustedPotency: gcdPotency,
           potencyMultiplier: potencyMultiplier,
-          cast: action.cast,
-          adjustedCast: GCD_RECAST,
+          cast: recast,
+          adjustedCast: recast + CASTER_TAX,
+          castMultiplier: castMultiplier,
+        };
+      }
+      // ice pd
+      else {
+        totalPotency += gcdPotency;
+        totalTime += recast;
+
+        detailedAction = {
+          name: action.name,
+          currentElement: currentElement,
+          potency: action.potency,
+          adjustedPotency: gcdPotency,
+          potencyMultiplier: potencyMultiplier,
+          cast: recast,
+          adjustedCast: recast,
           castMultiplier: castMultiplier,
         };
       }
@@ -121,12 +138,11 @@ export default function Calculator(props: CalculatorProps) {
       setDetailedActions(totalDetailedActions);
     }
   };
-
   useEffect(
     function () {
-      startCalculation(props.actions);
+      startCalculation(props.actions, props.sps);
     },
-    [props.actions]
+    [props.actions, props.sps]
   );
 
   return (
@@ -135,7 +151,7 @@ export default function Calculator(props: CalculatorProps) {
         <>
           <div className="bg-white shadow rounded my-4 p-2">
             <p className="font-mono">{potency} potency</p>
-            <p className="font-mono">{totalTime} s</p>
+            <p className="font-mono">{totalTime.toFixed(2)} s</p>
             <p className="font-mono">{(potency / totalTime).toFixed(2)} pps</p>
           </div>
           <Details detailedActions={detailedActions} />

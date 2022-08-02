@@ -61,32 +61,20 @@ function Detail(props: DetailedAction) {
       return (cast / 1000).toFixed(2);
     }
 
-    if (props.castMultiplier === 1) {
-      // check caster tax
-      if (props.cast === props.adjustedCast) {
-        return (
-          <div>
-            <span>
-              {CAST_HEADING} {roundCast(props.cast!)}
-            </span>
-          </div>
-        );
-      } else {
-        return (
-          <div>
-            <span>
-              {CAST_HEADING} {roundCast(props.cast!)} base + {CASTER_TAX_TEXT}
-            </span>
-          </div>
-        );
-      }
+    if (props.cast! < props.adjustedCast!) {
+      return (
+        <div>
+          <span>
+            {CAST_HEADING} {roundCast(props.cast!)} base + {CASTER_TAX_TEXT} ={" "}
+            {roundCast(props.adjustedCast!)}
+          </span>
+        </div>
+      );
     } else {
       return (
         <div>
           <span>
-            {CAST_HEADING} ({roundCast(props.cast!)} base *{" "}
-            {props.castMultiplier} {props.currentElement}) ={" "}
-            {roundCast(props.adjustedCast!)}
+            {CAST_HEADING} {roundCast(props.cast!)}
           </span>
         </div>
       );
