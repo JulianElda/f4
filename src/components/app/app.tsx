@@ -4,6 +4,7 @@ import { ActionType } from "components/action/action";
 import ActionList from "components/actionlist/actionlist";
 import Calculator from "components/calculator/calculator";
 import Header from "components/header/header";
+import Help from "components/help/help";
 import Preset from "components/preset/preset";
 import References from "components/references/references";
 import Sequence from "components/sequence/sequence";
@@ -26,7 +27,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-full flex flex-col max-w-2xl mx-auto py-4">
+    <div className="min-h-full flex flex-col max-w-4xl mx-auto py-4">
       <div className="w-full">
         <Header />
         <div className="grid grid-cols-2 md:space-x-8">
@@ -38,6 +39,7 @@ export default function App() {
           <div className="col-span-2 md:col-span-1">
             <SpSCalculator setSps={setSps} />
             <Preset setActions={setActions} />
+            <Help />
             <References />
           </div>
         </div>

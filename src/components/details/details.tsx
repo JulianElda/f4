@@ -2,6 +2,7 @@ import { ElementalStates } from "consts/jobactions";
 
 export type DetailedAction = {
   name: string;
+  filler: boolean;
   currentElement: ElementalStates;
   potency: number;
   adjustedPotency: number;
@@ -59,16 +60,7 @@ function Detail(props: DetailedAction) {
     function roundCast(cast: number): string {
       return (cast / 1000).toFixed(2);
     }
-
-    if (props.cast === 0) {
-      return (
-        <div>
-          <span>
-            {CAST_HEADING} {roundCast(props.recast)}
-          </span>
-        </div>
-      );
-    } else if (props.cast < props.adjustedCast) {
+    if (props.adjustedCast > props.recast) {
       return (
         <div>
           <span>
@@ -81,20 +73,26 @@ function Detail(props: DetailedAction) {
       return (
         <div>
           <span>
-            {CAST_HEADING} {roundCast(props.cast)}
+            {CAST_HEADING} {roundCast(props.recast)}
           </span>
         </div>
       );
     }
   };
 
-  return (
-    <div className="text-xs font-mono">
-      <div>
-        <span className="font-semibold">{props.name}</span>
-      </div>
-      {getPotency()}
-      {getTime()}
-    </div>
-  );
+  const getDetail = function () {
+    if (props.filler) return <></>;
+    else
+      return (
+        <div className="text-xs font-mono px-2">
+          <div>
+            <span className="font-semibold">{props.name}</span>
+          </div>
+          {getPotency()}
+          {getTime()}
+        </div>
+      );
+  };
+
+  return <>{getDetail()}</>;
 }
