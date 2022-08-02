@@ -2,16 +2,15 @@ import { ElementalStates } from "consts/jobactions";
 
 export type DetailedAction = {
   name: string;
-  currentElement?: ElementalStates;
-  potency?: number;
-  adjustedPotency?: number;
-  potencyMultiplier?: number;
-  cast?: number;
-  adjustedCast?: number;
-  castMultiplier?: number;
-  recast?: number;
-  adjustedRecast?: number;
-  note?: string;
+  currentElement: ElementalStates;
+  potency: number;
+  adjustedPotency: number;
+  potencyMultiplier: number;
+  cast: number;
+  adjustedCast: number;
+  castMultiplier: number;
+  recast: number;
+  note: string;
 };
 
 type DetailsProps = {
@@ -56,17 +55,25 @@ function Detail(props: DetailedAction) {
     }
   };
 
-  const getCast = function (): React.ReactNode {
+  const getTime = function (): React.ReactNode {
     function roundCast(cast: number): string {
       return (cast / 1000).toFixed(2);
     }
 
-    if (props.cast! < props.adjustedCast!) {
+    if (props.cast === 0) {
       return (
         <div>
           <span>
-            {CAST_HEADING} {roundCast(props.cast!)} base + {CASTER_TAX_TEXT} ={" "}
-            {roundCast(props.adjustedCast!)}
+            {CAST_HEADING} {roundCast(props.recast)}
+          </span>
+        </div>
+      );
+    } else if (props.cast < props.adjustedCast) {
+      return (
+        <div>
+          <span>
+            {CAST_HEADING} {roundCast(props.cast)} base + {CASTER_TAX_TEXT} ={" "}
+            {roundCast(props.adjustedCast)}
           </span>
         </div>
       );
@@ -74,7 +81,7 @@ function Detail(props: DetailedAction) {
       return (
         <div>
           <span>
-            {CAST_HEADING} {roundCast(props.cast!)}
+            {CAST_HEADING} {roundCast(props.cast)}
           </span>
         </div>
       );
@@ -86,8 +93,8 @@ function Detail(props: DetailedAction) {
       <div>
         <span className="font-semibold">{props.name}</span>
       </div>
-      {props.potency && getPotency()}
-      {props.cast && getCast()}
+      {getPotency()}
+      {getTime()}
     </div>
   );
 }

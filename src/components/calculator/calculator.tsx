@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { calculateRecast } from "consts/utils";
+import { L1_STANDARD_ROTATION } from "consts/lines";
 
 import {
   CASTER_TAX,
@@ -16,12 +17,24 @@ type CalculatorProps = {
   sps: number;
 };
 
+type CalculationResult = {
+  potency: number;
+  time: number;
+  detailedActions: DetailedAction[];
+};
+
 export default function Calculator(props: CalculatorProps) {
   const [potency, setPotency] = useState<number>(0);
   const [totalTime, setTotalTime] = useState<number>(0);
   const [detailedActions, setDetailedActions] = useState<DetailedAction[]>([]);
 
-  const startCalculation = function (jobActions: JobActionType[], sps: number) {
+  const [standardPotency, setStandardPotency] = useState<number>(0);
+  const [standardTotalTime, setStandardTotalTime] = useState<number>(0);
+
+  const startCalculation = function (
+    jobActions: JobActionType[],
+    sps: number
+  ): CalculationResult {
     let currentElement: ElementalStates = ElementalStates.AF3;
     let totalPotency: number = 0;
     let totalTime: number = 0;
@@ -39,6 +52,9 @@ export default function Calculator(props: CalculatorProps) {
       let castTime: number = recast * castMultiplier;
       let gcdPotency: number = action.potency * potencyMultiplier;
 
+      let tmpPotency: number = 0;
+      let tmpTime: number = 0;
+
       if (
         action.id === PD.id &&
         //currentElement === ElementalStates.UI1 ||
@@ -50,77 +66,41 @@ export default function Calculator(props: CalculatorProps) {
 
       // dont count filler spells
       if (action.filler) {
-        totalPotency += 0;
-        totalTime += 0;
-        detailedAction = {
-          name: action.name,
-        };
+        tmpPotency = 0;
+        tmpTime = 0;
       }
       // f4, despair
       else if (castTime > recast) {
-        totalPotency += gcdPotency;
-        totalTime += castTime + CASTER_TAX;
-
-        detailedAction = {
-          name: action.name,
-          currentElement: currentElement,
-          potency: action.potency,
-          adjustedPotency: gcdPotency,
-          potencyMultiplier: potencyMultiplier,
-          cast: recast,
-          adjustedCast: castTime + CASTER_TAX,
-          castMultiplier: castMultiplier,
-        };
+        tmpPotency = gcdPotency;
+        tmpTime = castTime + CASTER_TAX;
       }
-      // f3, b3
+      // f3, b3, ui pd
       else if (castTime < recast) {
-        totalPotency += gcdPotency;
+        tmpPotency = gcdPotency;
         // base gcd
-        totalTime += calculateRecast(sps, 2500) * 1000;
-
-        detailedAction = {
-          name: action.name,
-          currentElement: currentElement,
-          potency: action.potency,
-          adjustedPotency: gcdPotency,
-          potencyMultiplier: potencyMultiplier,
-          cast: calculateRecast(sps, 2500) * 1000,
-          adjustedCast: castTime,
-          castMultiplier: castMultiplier,
-        };
+        tmpTime = calculateRecast(sps, 2500) * 1000;
       }
       // fire pd, b4
       else if (castTime === recast) {
-        totalPotency += gcdPotency;
-        totalTime += recast + CASTER_TAX;
-
-        detailedAction = {
-          name: action.name,
-          currentElement: currentElement,
-          potency: action.potency,
-          adjustedPotency: gcdPotency,
-          potencyMultiplier: potencyMultiplier,
-          cast: recast,
-          adjustedCast: recast + CASTER_TAX,
-          castMultiplier: castMultiplier,
-        };
+        tmpPotency = gcdPotency;
+        tmpTime = recast + CASTER_TAX;
       }
-      // ice pd
-      else {
-        totalPotency += gcdPotency;
-        totalTime += recast;
 
-        detailedAction = {
-          name: action.name,
-          currentElement: currentElement,
-          potency: action.potency,
-          adjustedPotency: gcdPotency,
-          potencyMultiplier: potencyMultiplier,
-          cast: recast,
-          adjustedCast: recast,
-          castMultiplier: castMultiplier,
-        };
-      }
+      totalPotency += tmpPotency;
+      totalTime += tmpTime;
+
+      detailedAction = {
+        name: action.name,
+        currentElement: currentElement,
+        potency: action.potency,
+        adjustedPotency: tmpPotency,
+        potencyMultiplier: potencyMultiplier,
+        cast: castTime,
+        adjustedCast: tmpTime,
+        castMultiplier: castMultiplier,
+        recast: recast,
+        note: "",
+      };
 
       switch (action.id) {
         case F3.id:
@@ -133,14 +113,46 @@ export default function Calculator(props: CalculatorProps) {
 
       totalDetailedActions.push(detailedAction);
 
+      /*
       setPotency(totalPotency);
       setTotalTime(totalTime / 1000);
       setDetailedActions(totalDetailedActions);
+      */
     }
+    return {
+      potency: totalPotency,
+      time: totalTime / 1000,
+      detailedActions: totalDetailedActions,
+    };
   };
+
+  const compareStandard = function (): string {
+    let standardPps = standardPotency / standardTotalTime;
+    let pps = potency / totalTime;
+
+    return ((pps / standardPps) * 100).toFixed(3);
+  };
+
+  // calculate standard rotation from sps
   useEffect(
     function () {
-      startCalculation(props.actions, props.sps);
+      let { potency, time } = startCalculation(L1_STANDARD_ROTATION, props.sps);
+      setStandardPotency(potency);
+      setStandardTotalTime(time);
+    },
+    [props.sps]
+  );
+
+  // calculate from specified actions
+  useEffect(
+    function () {
+      let { potency, time, detailedActions } = startCalculation(
+        props.actions,
+        props.sps
+      );
+      setPotency(potency);
+      setTotalTime(time);
+      setDetailedActions(detailedActions);
     },
     [props.actions, props.sps]
   );
@@ -153,6 +165,7 @@ export default function Calculator(props: CalculatorProps) {
             <p className="font-mono">{potency} potency</p>
             <p className="font-mono">{totalTime.toFixed(2)} s</p>
             <p className="font-mono">{(potency / totalTime).toFixed(2)} pps</p>
+            <p className="font-mono">{compareStandard()}% from standard</p>
           </div>
           <Details detailedActions={detailedActions} />
         </>
