@@ -25,6 +25,15 @@
   src: url("Mplus1Code-Regular.woff2") format("woff2");
 }
 
+@font-face {
+  font-family: "M PLUS 1 Code";
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url("Mplus1Code-SemiBold.woff2") format("woff2");
+}
+
 $grid-color: 160;
 
 body {

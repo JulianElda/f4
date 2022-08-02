@@ -14,11 +14,14 @@ export default function Sequence(props: SequenceProps) {
     let content: React.ReactNode[] = [];
     for (let i = 0; i < props.actions.length; i++) {
       content.push(
-        <Action
-          action={props.actions[i]}
-          click={(_action: ActionType) => props.clickAction(i)}
-          key={Math.random() * 100}
-        />
+        <span key={Math.random() * 100 + "" + i}>
+          <Action
+            action={props.actions[i]}
+            click={(_action: ActionType) => props.clickAction(i)}
+            additionalStyle="mr-1 mb-2"
+          />
+          <span className="mr-1 text-slate-600">&gt;</span>
+        </span>
       );
     }
 
@@ -39,13 +42,13 @@ export default function Sequence(props: SequenceProps) {
       {props.actions.length === 0 && (
         <>
           <div className="bg-white shadow rounded space-x-2 mt-1 p-2">
-            <p>Nothing specified, add action below</p>
+            <p>Nothing specified, add actions from (Skills) or (Preset)</p>
           </div>
         </>
       )}
       {props.actions.length >= 1 && (
         <>
-          <div className="bg-white shadow rounded space-x-2 mt-1 p-2">
+          <div className="bg-white shadow rounded mt-1 p-2">
             {getSequenceContent()}
           </div>
           <p className="font-mono text-sm mx-2">{getLineNotation()}</p>
