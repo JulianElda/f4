@@ -137,6 +137,15 @@ export const D: JobActionType = {
   filler: false,
 };
 
+export const B1: JobActionType = {
+  id: "B1",
+  name: "Blizzard I",
+  element: ActionElements.ICE,
+  potency: 180,
+  cast: 2500,
+  filler: false,
+};
+
 export const B3: JobActionType = {
   id: "B3",
   name: "Blizzard III",

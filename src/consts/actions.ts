@@ -3,6 +3,7 @@ import img_f3 from "assets/images/f3.png";
 import img_f4 from "assets/images/f4.png";
 import img_d from "assets/images/d.png";
 import img_pd from "assets/images/pd.png";
+import img_b1 from "assets/images/b1.png";
 import img_b3 from "assets/images/b3.png";
 import img_b4 from "assets/images/b4.png";
 import img_t3 from "assets/images/t3.png";
@@ -29,6 +30,11 @@ export const f4_action: ActionType = {
 export const d_action: ActionType = {
   ...D,
   icon: img_d,
+};
+
+export const b1_action: ActionType = {
+  ...B3,
+  icon: img_b1,
 };
 
 export const b3_action: ActionType = {
