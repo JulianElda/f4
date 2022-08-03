@@ -269,9 +269,7 @@ export default function Calculator(props: CalculatorProps) {
       MULTIPLIER_POTENCY[ActionElements.FIRE][ElementalStates.AF3];
 
     totalTime +=
-      calculateF3Potency(totalF3PProducers) *
-      calculateRecast(sps, F3.cast) *
-      1000;
+      calculateF3Potency(totalF3PProducers) * calculateRecast(sps, 2500) * 1000;
 
     return {
       potency: totalPotency,

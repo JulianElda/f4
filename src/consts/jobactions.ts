@@ -105,8 +105,8 @@ export const F1: JobActionType = {
   id: "F1",
   name: "Fire I",
   element: ActionElements.FIRE,
-  potency: 260,
-  cast: 3500,
+  potency: 180,
+  cast: 2500,
   filler: false,
 };
 
