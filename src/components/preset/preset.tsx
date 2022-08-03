@@ -1,4 +1,4 @@
-import { L1_STANDARD_ROTATION, L13_5F4 } from "consts/lines";
+import { L0_STANDARD_ROTATION, L13_5F4 } from "consts/lines";
 
 type PresetProps = {
   setActions: Function;
@@ -20,9 +20,9 @@ export default function Preset(props: PresetProps) {
         <p
           className={PRESET_STYLE}
           onClick={() => {
-            props.setActions(L1_STANDARD_ROTATION);
+            props.setActions(L0_STANDARD_ROTATION);
           }}>
-          (1) Standard without F3P
+          (0) Standard
         </p>
         <p
           className={PRESET_STYLE}

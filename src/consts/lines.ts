@@ -9,8 +9,8 @@ import {
 import { ActionType } from "components/action/action";
 
 // standard without F3P
-// B3 B4 PD F3 3xF4 PD 3xF4 Desp
-export const L1_STANDARD_ROTATION: ActionType[] = [
+// B3 B4 PD F3 3xF4 PD 3xF4 Desp (F3P)
+export const L0_STANDARD_ROTATION: ActionType[] = [
   b3_action,
   b4_action,
   pd_action,

@@ -24,6 +24,4 @@ In this app, filler spells are spells you can cast anywhere in your rotation tha
 
 - add transpose
 
-- add F3P in pps calculation
-
 - add Swiftcast and Triplecast

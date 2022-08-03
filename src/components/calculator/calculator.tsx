@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { calculateRecast } from "consts/utils";
-import { L1_STANDARD_ROTATION } from "consts/lines";
+import { L0_STANDARD_ROTATION } from "consts/lines";
 
 import {
+  F1,
+  B3,
+  F3,
+  PD,
   CASTER_TAX,
   ElementalStates,
+  ActionElements,
+  JobActionType,
   MULTIPLIER_CAST,
   MULTIPLIER_POTENCY,
 } from "consts/jobactions";
-import { B3, F3, PD, JobActionType } from "consts/jobactions";
 import { ActionType } from "components/action/action";
 import Details, { DetailedAction } from "components/details/details";
+import F3PDetail from "components/details/f3pdetail";
 
 type CalculatorProps = {
   actions: ActionType[];
@@ -21,6 +27,7 @@ type CalculationResult = {
   potency: number;
   time: number;
   detailedActions: DetailedAction[];
+  f3p: number;
 };
 
 export default function Calculator(props: CalculatorProps) {
@@ -33,6 +40,8 @@ export default function Calculator(props: CalculatorProps) {
 
   const [showDetails, setShowDetails] = useState<boolean>(false);
 
+  const [f3PProducers, setF3PProducers] = useState<number>(0);
+
   const startCalculation = function (
     jobActions: JobActionType[],
     sps: number
@@ -41,6 +50,30 @@ export default function Calculator(props: CalculatorProps) {
     let totalPotency: number = 0;
     let totalTime: number = 0;
     let totalDetailedActions: DetailedAction[] = [];
+    let totalF3PProducers: number = 0;
+
+    const calculateF3Potency = function (howMany: number) {
+      // 40% chance of producing F3P
+      const f3pProc: number = 0.4;
+
+      // probability that multiple F1s or PDs produce at least 1 F3P
+      const procChance: number =
+        // 100%
+        1 -
+        Math.pow(
+          // probability of NOT getting a proc in one cast
+          1 - f3pProc,
+          // squared by how many casts
+          howMany
+        );
+
+      // "estimated" damage from probability of getting a proc * af1 f3p potency
+      return (
+        procChance *
+        F3.potency *
+        MULTIPLIER_POTENCY[ActionElements.FIRE][ElementalStates.AF3]
+      );
+    };
 
     for (let i = 0; i < jobActions.length; i++) {
       let action: JobActionType = jobActions[i];
@@ -71,6 +104,16 @@ export default function Calculator(props: CalculatorProps) {
         currentElement === ElementalStates.UI3
       ) {
         elementAdjustedCastTime = 0;
+      }
+
+      // check F3P producers
+      if (
+        // AF PD
+        (action.id === PD.id && currentElement === ElementalStates.AF3) ||
+        // F1
+        (action.id === F1.id && currentElement === ElementalStates.AF3)
+      ) {
+        totalF3PProducers++;
       }
 
       // dont count filler spells
@@ -126,10 +169,14 @@ export default function Calculator(props: CalculatorProps) {
 
       totalDetailedActions.push(detailedAction);
     }
+
+    totalPotency += calculateF3Potency(totalF3PProducers);
+
     return {
       potency: totalPotency,
       time: totalTime / 1000,
       detailedActions: totalDetailedActions,
+      f3p: totalF3PProducers,
     };
   };
 
@@ -143,9 +190,13 @@ export default function Calculator(props: CalculatorProps) {
   // calculate standard rotation from sps
   useEffect(
     function () {
-      let { potency, time } = startCalculation(L1_STANDARD_ROTATION, props.sps);
+      let { potency, time, f3p } = startCalculation(
+        L0_STANDARD_ROTATION,
+        props.sps
+      );
       setStandardPotency(potency);
       setStandardTotalTime(time);
+      setF3PProducers(f3p);
     },
     [props.sps]
   );
@@ -153,13 +204,14 @@ export default function Calculator(props: CalculatorProps) {
   // calculate from specified actions
   useEffect(
     function () {
-      let { potency, time, detailedActions } = startCalculation(
+      let { potency, time, detailedActions, f3p } = startCalculation(
         props.actions,
         props.sps
       );
       setPotency(potency);
       setTotalTime(time);
       setDetailedActions(detailedActions);
+      setF3PProducers(f3p);
     },
     [props.actions, props.sps]
   );
@@ -174,6 +226,7 @@ export default function Calculator(props: CalculatorProps) {
             Hide
           </label>
           <Details detailedActions={detailedActions} />
+          {f3PProducers > 0 && <F3PDetail f3PProducers={f3PProducers} />}
         </>
       );
     else
