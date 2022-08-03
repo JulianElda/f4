@@ -1,5 +1,9 @@
 import { ActionType } from "components/action/action";
-import { L0_STANDARD_ROTATION, L13_5F4 } from "consts/lines";
+import {
+  L0_STANDARD_ROTATION,
+  L13_5F4,
+  L15_DOUBLE_PARADOX,
+} from "consts/lines";
 
 type PresetProps = {
   setActions: Function;
@@ -10,6 +14,7 @@ export default function Preset(props: PresetProps) {
     Clear: [],
     "(0) Standard": L0_STANDARD_ROTATION,
     "(13) 5xF4": L13_5F4,
+    "(15) Double Paradox": L15_DOUBLE_PARADOX,
   };
 
   const getPresets = function (): React.ReactNode {

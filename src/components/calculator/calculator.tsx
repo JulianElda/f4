@@ -4,9 +4,11 @@ import { L0_STANDARD_ROTATION } from "consts/lines";
 
 import {
   F1,
-  B3,
   F3,
+  B1,
+  B3,
   PD,
+  TPOSE,
   CASTER_TAX,
   ElementalStates,
   ActionElements,
@@ -75,6 +77,22 @@ export default function Calculator(props: CalculatorProps) {
       );
     };
 
+    const isAFElement = function (elementalState: ElementalStates): boolean {
+      return (
+        elementalState === ElementalStates.AF1 ||
+        elementalState === ElementalStates.AF2 ||
+        elementalState === ElementalStates.AF3
+      );
+    };
+
+    const isUIElement = function (elementalState: ElementalStates): boolean {
+      return (
+        elementalState === ElementalStates.UI1 ||
+        elementalState === ElementalStates.UI2 ||
+        elementalState === ElementalStates.UI3
+      );
+    };
+
     for (let i = 0; i < jobActions.length; i++) {
       let action: JobActionType = jobActions[i];
       let detailedAction: DetailedAction;
@@ -97,21 +115,16 @@ export default function Calculator(props: CalculatorProps) {
 
       // handle some exceptions
       // PD on UI is instant cast
-      if (
-        action.id === PD.id &&
-        //currentElement === ElementalStates.UI1 ||
-        //currentElement === ElementalStates.UI2 ||
-        currentElement === ElementalStates.UI3
-      ) {
+      if (action.id === PD.id && isUIElement(currentElement)) {
         elementAdjustedCastTime = 0;
       }
 
       // check F3P producers
       if (
         // AF PD
-        (action.id === PD.id && currentElement === ElementalStates.AF3) ||
+        (action.id === PD.id && isAFElement(currentElement)) ||
         // F1
-        (action.id === F1.id && currentElement === ElementalStates.AF3)
+        (action.id === F1.id && isAFElement(currentElement))
       ) {
         totalF3PProducers++;
       }
@@ -158,12 +171,96 @@ export default function Calculator(props: CalculatorProps) {
         note: "",
       };
 
+      // each action changes elemental states differently
       switch (action.id) {
+        // F1
+        case F1.id: {
+          switch (currentElement) {
+            // change to AF1
+            case ElementalStates.UI1:
+            case ElementalStates.UI2:
+            case ElementalStates.UI3:
+              //case ElementalStates.NONE:
+              currentElement = ElementalStates.AF1;
+              break;
+            // "upgrade" AF
+            case ElementalStates.AF1:
+              currentElement = ElementalStates.AF2;
+              break;
+            case ElementalStates.AF2:
+              currentElement = ElementalStates.AF3;
+              break;
+            case ElementalStates.AF3:
+              currentElement = ElementalStates.AF3;
+              break;
+          }
+          break;
+        }
+        // F3 always changes to AF3
         case F3.id:
           currentElement = ElementalStates.AF3;
           break;
+        // B1
+        case B1.id: {
+          switch (currentElement) {
+            // change to UI1
+            case ElementalStates.AF1:
+            case ElementalStates.AF2:
+            case ElementalStates.AF3:
+              //case ElementalStates.NONE:
+              currentElement = ElementalStates.UI1;
+              break;
+            // "upgrade" UI
+            case ElementalStates.UI1:
+              currentElement = ElementalStates.UI2;
+              break;
+            case ElementalStates.UI2:
+              currentElement = ElementalStates.UI3;
+              break;
+            case ElementalStates.UI3:
+              currentElement = ElementalStates.UI3;
+              break;
+          }
+          break;
+        }
+        // F3 always changes to UI3
         case B3.id:
           currentElement = ElementalStates.UI3;
+          break;
+        // paradox
+        case PD.id: {
+          switch (currentElement) {
+            // "upgrade" AF
+            case ElementalStates.AF1:
+              currentElement = ElementalStates.AF2;
+              break;
+            case ElementalStates.AF2:
+              currentElement = ElementalStates.AF3;
+              break;
+            case ElementalStates.AF3:
+              currentElement = ElementalStates.AF3;
+              break;
+            // "upgrade" UI
+            case ElementalStates.UI1:
+              currentElement = ElementalStates.UI2;
+              break;
+            case ElementalStates.UI2:
+              currentElement = ElementalStates.UI3;
+              break;
+            case ElementalStates.UI3:
+              currentElement = ElementalStates.UI3;
+              break;
+          }
+          break;
+        }
+
+        // Transpose
+        case TPOSE.id:
+          // AF* to UI1
+          if (isAFElement(currentElement)) currentElement = ElementalStates.UI1;
+          // UI* to AF1
+          else if (isUIElement(currentElement))
+            currentElement = ElementalStates.AF1;
           break;
       }
 

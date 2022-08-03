@@ -8,9 +8,25 @@ import img_b3 from "assets/images/b3.png";
 import img_b4 from "assets/images/b4.png";
 import img_t3 from "assets/images/t3.png";
 import img_xeno from "assets/images/xeno.png";
+import img_tpose from "assets/images/transpose.png";
+import img_swift from "assets/images/swift.png";
+import img_triple from "assets/images/triplecast.png";
 
 import { ActionType } from "components/action/action";
-import { F1, F3, F4, B3, B4, D, PD, XENO, T3P } from "consts/jobactions";
+import {
+  F1,
+  F3,
+  F4,
+  B3,
+  B4,
+  D,
+  PD,
+  XENO,
+  T3P,
+  TPOSE,
+  SWIFTCAST,
+  TRIPLECAST,
+} from "consts/jobactions";
 
 export const f1_action: ActionType = {
   ...F1,
@@ -60,4 +76,19 @@ export const t3p_action: ActionType = {
 export const xeno_action: ActionType = {
   ...XENO,
   icon: img_xeno,
+};
+
+export const tpose_action: ActionType = {
+  ...TPOSE,
+  icon: img_tpose,
+};
+
+export const swiftcast_action: ActionType = {
+  ...SWIFTCAST,
+  icon: img_swift,
+};
+
+export const triplecast_action: ActionType = {
+  ...TRIPLECAST,
+  icon: img_triple,
 };

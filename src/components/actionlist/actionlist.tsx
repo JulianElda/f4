@@ -9,16 +9,15 @@ import {
   pd_action,
   t3p_action,
   xeno_action,
+  tpose_action,
+  swiftcast_action,
+  triplecast_action,
 } from "consts/actions";
 import Action, { ActionType } from "components/action/action";
 
 type ActionListProps = {
   clickAction: (action: ActionType) => void;
 };
-
-// starting actions, standard line
-// in order:
-// B3 B4 PD F3 3xF4 PD 3xF4 Desp
 
 export default function ActionList(props: ActionListProps) {
   return (
@@ -38,6 +37,11 @@ export default function ActionList(props: ActionListProps) {
         <div className="space-x-2">
           <Action action={t3p_action} click={props.clickAction} />
           <Action action={xeno_action} click={props.clickAction} />
+        </div>
+        <div className="space-x-2">
+          <Action action={tpose_action} click={props.clickAction} />
+          <Action action={swiftcast_action} click={props.clickAction} />
+          <Action action={triplecast_action} click={props.clickAction} />
         </div>
       </div>
     </div>

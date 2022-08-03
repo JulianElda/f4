@@ -192,3 +192,32 @@ export const T3P: JobActionType = {
   cast: 0,
   filler: true,
 };
+
+// instants
+
+export const TPOSE: JobActionType = {
+  id: "Tpose",
+  name: "Transpose",
+  element: ActionElements.UNASPECTED,
+  potency: 0,
+  cast: 0,
+  filler: true,
+};
+
+export const SWIFTCAST: JobActionType = {
+  id: "Swiftcast",
+  name: "Swiftcast",
+  element: ActionElements.UNASPECTED,
+  potency: 0,
+  cast: 0,
+  filler: true,
+};
+
+export const TRIPLECAST: JobActionType = {
+  id: "Triplecast",
+  name: "Triplecast",
+  element: ActionElements.UNASPECTED,
+  potency: 0,
+  cast: 0,
+  filler: true,
+};
