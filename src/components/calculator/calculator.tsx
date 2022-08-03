@@ -69,12 +69,7 @@ export default function Calculator(props: CalculatorProps) {
           howMany
         );
 
-      // "estimated" damage from probability of getting a proc * af1 f3p potency
-      return (
-        procChance *
-        F3.potency *
-        MULTIPLIER_POTENCY[ActionElements.FIRE][ElementalStates.AF3]
-      );
+      return procChance;
     };
 
     const isAFElement = function (elementalState: ElementalStates): boolean {
@@ -267,7 +262,16 @@ export default function Calculator(props: CalculatorProps) {
       totalDetailedActions.push(detailedAction);
     }
 
-    totalPotency += calculateF3Potency(totalF3PProducers);
+    // "estimated" damage from probability of getting a proc * af1 f3p potency
+    totalPotency +=
+      calculateF3Potency(totalF3PProducers) *
+      F3.potency *
+      MULTIPLIER_POTENCY[ActionElements.FIRE][ElementalStates.AF3];
+
+    totalTime +=
+      calculateF3Potency(totalF3PProducers) *
+      calculateRecast(sps, F3.cast) *
+      1000;
 
     return {
       potency: totalPotency,
