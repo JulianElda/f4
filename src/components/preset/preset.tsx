@@ -1,8 +1,12 @@
 import { ActionType } from "components/action/action";
 import {
   L0_STANDARD_ROTATION,
+  L3_STANDARD_UI_PD_SKIP,
+  L4_STANDARD_5F4,
+  L10_4F4,
   L13_5F4,
   L15_DOUBLE_PARADOX,
+  L161_DOUBLE_PARADOX_AF2,
 } from "consts/lines";
 
 type PresetProps = {
@@ -13,8 +17,12 @@ export default function Preset(props: PresetProps) {
   const PRESET_LINES = {
     Clear: [],
     "(0) Standard": L0_STANDARD_ROTATION,
+    "(3) Standard w UI PD skip": L3_STANDARD_UI_PD_SKIP,
+    "(4) Standard w 5xF4": L4_STANDARD_5F4,
+    "(10) 4xF4": L10_4F4,
     "(13) 5xF4": L13_5F4,
     "(15) Double Paradox": L15_DOUBLE_PARADOX,
+    "(16.1) Double Paradox AF2": L161_DOUBLE_PARADOX_AF2,
   };
 
   const getPresets = function (): React.ReactNode {

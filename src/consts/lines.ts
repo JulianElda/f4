@@ -26,6 +26,48 @@ export const L0_STANDARD_ROTATION: ActionType[] = [
   d_action,
 ];
 
+// B3 B4 F3 3xF4 PD 3xF4 Desp (F3P)
+export const L3_STANDARD_UI_PD_SKIP: ActionType[] = [
+  b3_action,
+  b4_action,
+  f3_action,
+  f4_action,
+  f4_action,
+  f4_action,
+  pd_action,
+  f4_action,
+  f4_action,
+  f4_action,
+  d_action,
+];
+
+// B3 B4 PD F3 3xF4 PD 2xF4 Desp (F3P)
+export const L4_STANDARD_5F4: ActionType[] = [
+  b3_action,
+  b4_action,
+  pd_action,
+  f3_action,
+  f4_action,
+  f4_action,
+  f4_action,
+  pd_action,
+  f4_action,
+  f4_action,
+  d_action,
+];
+
+// B3 F3 4xF4 PD Desp (F3P)
+export const L10_4F4: ActionType[] = [
+  b3_action,
+  f3_action,
+  f4_action,
+  f4_action,
+  pd_action,
+  f4_action,
+  f4_action,
+  d_action,
+];
+
 // B3 PD F3 5xF4 Desp
 export const L13_5F4: ActionType[] = [
   b3_action,
@@ -46,6 +88,22 @@ export const L15_DOUBLE_PARADOX: ActionType[] = [
   pd_action,
   tpose_action,
   pd_action,
+  f1_action,
+  f4_action,
+  f4_action,
+  f4_action,
+  f4_action,
+  d_action,
+];
+
+// B3 B4 PD AF1 PD F4 F1 4xF4 Desp (F3P)
+export const L161_DOUBLE_PARADOX_AF2: ActionType[] = [
+  b3_action,
+  b4_action,
+  pd_action,
+  tpose_action,
+  pd_action,
+  f4_action,
   f1_action,
   f4_action,
   f4_action,
