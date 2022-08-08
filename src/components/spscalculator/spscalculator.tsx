@@ -15,7 +15,9 @@ export default function SpSCalculator(props: SpSCalculatorProps) {
 
   return (
     <div className="my-4">
-      <label className="font-semibold">Spellspeed</label>
+      <label htmlFor="sps" className="font-semibold">
+        Spellspeed
+      </label>
       <div className="bg-white shadow rounded space-y-2 mt-1 p-2">
         <div>
           <input

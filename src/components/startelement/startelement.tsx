@@ -19,10 +19,14 @@ export default function StartElement(props: StartElementProps) {
 
   return (
     <div className="my-4">
-      <label className="font-semibold">Starting element</label>
+      <label htmlFor="startingelement" className="font-semibold">
+        Starting element
+      </label>
       <div className="bg-white shadow rounded space-y-2 mt-1 p-2">
         <div>
           <select
+            id="startingelement"
+            name="startingelement"
             className="shadow-sm bg-white focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
             value={startingElement}
             onChange={(e) =>
