@@ -23,6 +23,7 @@ import F3PDetail from "components/details/f3pdetail";
 type CalculatorProps = {
   actions: ActionType[];
   sps: number;
+  startingElement: ElementalStates;
 };
 
 type CalculationResult = {
@@ -46,9 +47,10 @@ export default function Calculator(props: CalculatorProps) {
 
   const startCalculation = function (
     jobActions: JobActionType[],
-    sps: number
+    sps: number,
+    currentElement: ElementalStates
   ): CalculationResult {
-    let currentElement: ElementalStates = ElementalStates.AF3;
+    //let currentElement: ElementalStates = ElementalStates.AF3;
     let totalPotency: number = 0;
     let totalTime: number = 0;
     let totalDetailedActions: DetailedAction[] = [];
@@ -291,13 +293,14 @@ export default function Calculator(props: CalculatorProps) {
     function () {
       let { potency, time, f3p } = startCalculation(
         L0_STANDARD_ROTATION,
-        props.sps
+        props.sps,
+        props.startingElement
       );
       setStandardPotency(potency);
       setStandardTotalTime(time);
       setF3PProducers(f3p);
     },
-    [props.sps]
+    [props.sps, props.startingElement]
   );
 
   // calculate from specified actions
@@ -305,14 +308,15 @@ export default function Calculator(props: CalculatorProps) {
     function () {
       let { potency, time, detailedActions, f3p } = startCalculation(
         props.actions,
-        props.sps
+        props.sps,
+        props.startingElement
       );
       setPotency(potency);
       setTotalTime(time);
       setDetailedActions(detailedActions);
       setF3PProducers(f3p);
     },
-    [props.actions, props.sps]
+    [props.actions, props.sps, props.startingElement]
   );
 
   const getDetails = function (): React.ReactNode {
@@ -321,7 +325,7 @@ export default function Calculator(props: CalculatorProps) {
         <>
           <label
             onClick={() => setShowDetails(false)}
-            className="text-sm underline decoration-dotted hover:decoration-solid cursor-pointer px-2">
+            className="text-sm underline decoration-dotted hover:decoration-solid cursor-pointer">
             Hide
           </label>
           <Details detailedActions={detailedActions} />
@@ -332,7 +336,7 @@ export default function Calculator(props: CalculatorProps) {
       return (
         <label
           onClick={() => setShowDetails(true)}
-          className="text-sm underline decoration-dotted hover:decoration-solid cursor-pointer px-2">
+          className="text-sm underline decoration-dotted hover:decoration-solid cursor-pointer">
           Show details
         </label>
       );
