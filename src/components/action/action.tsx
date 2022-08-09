@@ -10,8 +10,8 @@ type ActionProps = {
   click: (action: ActionType) => void;
 };
 
-const WIDTH: string = "32";
-const HEIGHT: string = "32";
+const WIDTH: string = "40";
+const HEIGHT: string = "40";
 
 export default function Action(props: ActionProps) {
   return (

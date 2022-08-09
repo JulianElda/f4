@@ -119,6 +119,15 @@ export const F3: JobActionType = {
   filler: false,
 };
 
+export const F3P: JobActionType = {
+  id: "F3P",
+  name: "Fire III Proc",
+  element: ActionElements.FIRE,
+  potency: 260,
+  cast: 0,
+  filler: false,
+};
+
 export const F4: JobActionType = {
   id: "F4",
   name: "Fire IV",
@@ -216,6 +225,15 @@ export const SWIFTCAST: JobActionType = {
 export const TRIPLECAST: JobActionType = {
   id: "Triplecast",
   name: "Triplecast",
+  element: ActionElements.UNASPECTED,
+  potency: 0,
+  cast: 0,
+  filler: true,
+};
+
+export const LUCID: JobActionType = {
+  id: "Lucid",
+  name: "Lucid Dreaming",
   element: ActionElements.UNASPECTED,
   potency: 0,
   cast: 0,

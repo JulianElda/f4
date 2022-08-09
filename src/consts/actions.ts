@@ -1,5 +1,6 @@
 import img_f1 from "assets/images/f1.png";
 import img_f3 from "assets/images/f3.png";
+import img_f3p from "assets/images/f3p.png";
 import img_f4 from "assets/images/f4.png";
 import img_d from "assets/images/d.png";
 import img_pd from "assets/images/pd.png";
@@ -11,11 +12,13 @@ import img_xeno from "assets/images/xeno.png";
 import img_tpose from "assets/images/transpose.png";
 import img_swift from "assets/images/swift.png";
 import img_triple from "assets/images/triplecast.png";
+import img_lucid from "assets/images/lucid.png";
 
 import { ActionType } from "components/action/action";
 import {
   F1,
   F3,
+  F3P,
   F4,
   B3,
   B4,
@@ -26,6 +29,7 @@ import {
   TPOSE,
   SWIFTCAST,
   TRIPLECAST,
+  LUCID,
 } from "consts/jobactions";
 
 export const f1_action: ActionType = {
@@ -36,6 +40,11 @@ export const f1_action: ActionType = {
 export const f3_action: ActionType = {
   ...F3,
   icon: img_f3,
+};
+
+export const f3p_action: ActionType = {
+  ...F3P,
+  icon: img_f3p,
 };
 
 export const f4_action: ActionType = {
@@ -91,4 +100,9 @@ export const swiftcast_action: ActionType = {
 export const triplecast_action: ActionType = {
   ...TRIPLECAST,
   icon: img_triple,
+};
+
+export const lucid_action: ActionType = {
+  ...LUCID,
+  icon: img_lucid,
 };
