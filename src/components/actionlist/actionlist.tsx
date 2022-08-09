@@ -13,6 +13,7 @@ import {
   tpose_action,
   swiftcast_action,
   triplecast_action,
+  manafont_action,
   lucid_action,
 } from "consts/actions";
 import Action, { ActionType } from "components/action/action";
@@ -41,6 +42,7 @@ export default function ActionList(props: ActionListProps) {
           <Action action={tpose_action} click={props.clickAction} />
           <Action action={swiftcast_action} click={props.clickAction} />
           <Action action={triplecast_action} click={props.clickAction} />
+          <Action action={manafont_action} click={props.clickAction} />
           <Action action={lucid_action} click={props.clickAction} />
         </div>
       </div>

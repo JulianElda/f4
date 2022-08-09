@@ -62,7 +62,7 @@ describe("add skills to sequences", () => {
 describe("calculate lines", () => {
   const user = userEvent.setup();
 
-  test("(0) Standard", async () => {
+  test("(N0) Standard", async () => {
     render(<App />);
     await user.click(screen.getByText("(0) Standard"));
     expect(screen.getByText("5821.20 potency")).toBeInTheDocument();
@@ -73,7 +73,7 @@ describe("calculate lines", () => {
     ).toBeInTheDocument();
   });
 
-  test("(15) Double Paradox", async () => {
+  test("(N15) Double Paradox", async () => {
     render(<App />);
     await user.click(screen.getByText("(15) Double Paradox"));
     expect(screen.getByText("4923.52 potency")).toBeInTheDocument();

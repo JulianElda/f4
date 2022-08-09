@@ -46,9 +46,15 @@ export default function App() {
             />
           </div>
           <div className="col-span-2 md:col-span-1">
-            <StartElement setStartingElement={setStartingElement} />
+            <StartElement
+              startingElement={startingElement}
+              setStartingElement={setStartingElement}
+            />
             <SpSCalculator setSps={setSps} />
-            <Preset setActions={setActions} />
+            <Preset
+              setActions={setActions}
+              setStartingElement={setStartingElement}
+            />
             <Help />
             <References />
           </div>

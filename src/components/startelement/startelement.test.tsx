@@ -6,7 +6,7 @@ import StartElement from "./startelement";
 
 test("select starting element", async () => {
   const user = userEvent.setup();
-  render(<StartElement />);
+  render(<StartElement startingElement={ElementalStates.AF3} />);
   const startingElement = screen.getByLabelText("Starting element");
 
   await user.selectOptions(startingElement, ElementalStates.UI1);

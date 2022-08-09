@@ -231,6 +231,15 @@ export const TRIPLECAST: JobActionType = {
   filler: true,
 };
 
+export const MANAFONT: JobActionType = {
+  id: "Manafont",
+  name: "Manafont",
+  element: ActionElements.UNASPECTED,
+  potency: 0,
+  cast: 0,
+  filler: true,
+};
+
 export const LUCID: JobActionType = {
   id: "Lucid",
   name: "Lucid Dreaming",

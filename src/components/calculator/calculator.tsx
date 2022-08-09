@@ -6,11 +6,13 @@ import {
   isAFElement,
   isUIElement,
 } from "consts/utils";
-import { L0_STANDARD_ROTATION } from "consts/lines";
+import { N0_STANDARD_ROTATION } from "consts/lines";
 import {
   F1,
   F3,
   PD,
+  SWIFTCAST,
+  TRIPLECAST,
   CASTER_TAX,
   ElementalStates,
   ActionElements,
@@ -58,6 +60,9 @@ export default function Calculator(props: CalculatorProps) {
     let totalDetailedActions: DetailedAction[] = [];
     let totalF3PProducers: number = 0;
 
+    let swiftcastCounter: number = 0;
+    let triplecastCounter: number = 0;
+
     for (let i = 0; i < jobActions.length; i++) {
       let action: JobActionType = jobActions[i];
       let detailedAction: DetailedAction;
@@ -82,6 +87,23 @@ export default function Calculator(props: CalculatorProps) {
       // PD on UI is instant cast
       if (action.id === PD.id && isUIElement(currentElement)) {
         elementAdjustedCastTime = 0;
+      }
+
+      // handle instant casts
+      // swiftcast is used before triplecast
+      if (swiftcastCounter > 0) {
+        swiftcastCounter = 0;
+        elementAdjustedCastTime = 0;
+      } else if (triplecastCounter > 0) {
+        triplecastCounter--;
+        elementAdjustedCastTime = 0;
+      }
+
+      // add instant cast counters
+      if (action.id === SWIFTCAST.id) {
+        swiftcastCounter = 1;
+      } else if (action.id === TRIPLECAST.id) {
+        triplecastCounter = 3;
       }
 
       // check F3P producers
@@ -170,16 +192,15 @@ export default function Calculator(props: CalculatorProps) {
   // calculate standard pps
   useEffect(
     function () {
-      let { potency, time, f3p } = startCalculation(
-        L0_STANDARD_ROTATION,
+      let { potency, time } = startCalculation(
+        N0_STANDARD_ROTATION,
         props.sps,
-        props.startingElement
+        ElementalStates.AF3
       );
       setStandardPotency(potency);
       setStandardTotalTime(time);
-      setF3PProducers(f3p);
     },
-    [props.sps, props.startingElement, startCalculation]
+    [props.sps, startCalculation]
   );
 
   // calculate line pps from specified actions

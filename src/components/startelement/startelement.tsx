@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ElementalStates } from "consts/jobactions";
 
 type StartElementProps = {
+  startingElement: ElementalStates;
   setStartingElement?: Function;
 };
 
 export default function StartElement(props: StartElementProps) {
   const [startingElement, setStartingElement] = useState<ElementalStates>(
-    ElementalStates.AF3
+    props.startingElement
   );
 
   const onChangeStartingElement = function (
@@ -16,6 +17,13 @@ export default function StartElement(props: StartElementProps) {
     setStartingElement(newStartingElement);
     props.setStartingElement?.(newStartingElement);
   };
+
+  useEffect(
+    function () {
+      setStartingElement(props.startingElement);
+    },
+    [props.startingElement]
+  );
 
   return (
     <div className="my-4">
@@ -40,7 +48,6 @@ export default function StartElement(props: StartElementProps) {
             <option value={ElementalStates.UI3}>{ElementalStates.UI3}</option>
           </select>
         </div>
-        <p className="text-sm">Also used to calculate "standard rotation"</p>
       </div>
     </div>
   );

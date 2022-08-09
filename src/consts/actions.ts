@@ -12,6 +12,7 @@ import img_xeno from "assets/images/xeno.png";
 import img_tpose from "assets/images/transpose.png";
 import img_swift from "assets/images/swift.png";
 import img_triple from "assets/images/triplecast.png";
+import img_mf from "assets/images/mf.png";
 import img_lucid from "assets/images/lucid.png";
 
 import { ActionType } from "components/action/action";
@@ -30,6 +31,7 @@ import {
   SWIFTCAST,
   TRIPLECAST,
   LUCID,
+  MANAFONT,
 } from "consts/jobactions";
 
 export const f1_action: ActionType = {
@@ -100,6 +102,11 @@ export const swiftcast_action: ActionType = {
 export const triplecast_action: ActionType = {
   ...TRIPLECAST,
   icon: img_triple,
+};
+
+export const manafont_action: ActionType = {
+  ...MANAFONT,
+  icon: img_mf,
 };
 
 export const lucid_action: ActionType = {

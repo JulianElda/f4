@@ -7,11 +7,12 @@ import {
   b4_action,
   pd_action,
   tpose_action,
+  swiftcast_action,
 } from "consts/actions";
 import { ActionType } from "components/action/action";
 
 // B3 B4 PD F3 3xF4 PD 3xF4 Desp (F3P)
-export const L0_STANDARD_ROTATION: ActionType[] = [
+export const N0_STANDARD_ROTATION: ActionType[] = [
   b3_action,
   b4_action,
   pd_action,
@@ -27,7 +28,7 @@ export const L0_STANDARD_ROTATION: ActionType[] = [
 ];
 
 // B3 B4 F3 3xF4 PD 3xF4 Desp (F3P)
-export const L3_STANDARD_UI_PD_SKIP: ActionType[] = [
+export const N3_STANDARD_UI_PD_SKIP: ActionType[] = [
   b3_action,
   b4_action,
   f3_action,
@@ -42,7 +43,7 @@ export const L3_STANDARD_UI_PD_SKIP: ActionType[] = [
 ];
 
 // B3 B4 PD F3 3xF4 PD 2xF4 Desp (F3P)
-export const L4_STANDARD_5F4: ActionType[] = [
+export const N4_STANDARD_5F4: ActionType[] = [
   b3_action,
   b4_action,
   pd_action,
@@ -57,7 +58,7 @@ export const L4_STANDARD_5F4: ActionType[] = [
 ];
 
 // B3 F3 4xF4 PD Desp (F3P)
-export const L10_4F4: ActionType[] = [
+export const N10_4F4: ActionType[] = [
   b3_action,
   f3_action,
   f4_action,
@@ -69,7 +70,7 @@ export const L10_4F4: ActionType[] = [
 ];
 
 // B3 PD F3 5xF4 Desp
-export const L13_5F4: ActionType[] = [
+export const N13_5F4: ActionType[] = [
   b3_action,
   pd_action,
   f3_action,
@@ -82,7 +83,7 @@ export const L13_5F4: ActionType[] = [
 ];
 
 // B3 B4 PD AF1 PD F1 4xF4 Desp (F3P)
-export const L15_DOUBLE_PARADOX: ActionType[] = [
+export const N15_DOUBLE_PARADOX: ActionType[] = [
   b3_action,
   b4_action,
   pd_action,
@@ -97,7 +98,7 @@ export const L15_DOUBLE_PARADOX: ActionType[] = [
 ];
 
 // B3 B4 PD AF1 PD F4 F1 4xF4 Desp (F3P)
-export const L161_DOUBLE_PARADOX_AF2: ActionType[] = [
+export const N161_DOUBLE_PARADOX_AF2: ActionType[] = [
   b3_action,
   b4_action,
   pd_action,
@@ -106,6 +107,17 @@ export const L161_DOUBLE_PARADOX_AF2: ActionType[] = [
   f4_action,
   f1_action,
   f4_action,
+  f4_action,
+  f4_action,
+  f4_action,
+  d_action,
+];
+
+// UI1 PD F3* 3xF4 Desp
+export const I5_3xF4_TRANSPOSE: ActionType[] = [
+  pd_action,
+  swiftcast_action,
+  f3_action,
   f4_action,
   f4_action,
   f4_action,
