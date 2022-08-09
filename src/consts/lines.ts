@@ -8,6 +8,7 @@ import {
   pd_action,
   tpose_action,
   swiftcast_action,
+  f3p_action,
 } from "consts/actions";
 import { ActionType } from "components/action/action";
 
@@ -98,7 +99,7 @@ export const N15_DOUBLE_PARADOX: ActionType[] = [
 ];
 
 // B3 B4 PD AF1 PD F4 F1 4xF4 Desp (F3P)
-export const N161_DOUBLE_PARADOX_AF2: ActionType[] = [
+export const N16_1_DOUBLE_PARADOX_AF2: ActionType[] = [
   b3_action,
   b4_action,
   pd_action,
@@ -107,6 +108,18 @@ export const N161_DOUBLE_PARADOX_AF2: ActionType[] = [
   f4_action,
   f1_action,
   f4_action,
+  f4_action,
+  f4_action,
+  f4_action,
+  d_action,
+];
+
+// UI1 PD AF1 F3P 3xF4 Desp
+export const N111_DOUBLE_TRANSPOSE_F3P: ActionType[] = [
+  tpose_action,
+  pd_action,
+  tpose_action,
+  f3p_action,
   f4_action,
   f4_action,
   f4_action,

@@ -7,7 +7,8 @@ import {
   N10_4F4,
   N13_5F4,
   N15_DOUBLE_PARADOX,
-  N161_DOUBLE_PARADOX_AF2,
+  N16_1_DOUBLE_PARADOX_AF2,
+  N111_DOUBLE_TRANSPOSE_F3P,
   I5_3xF4_TRANSPOSE,
 } from "consts/lines";
 
@@ -43,7 +44,11 @@ export default function Preset(props: PresetProps) {
       startingElement: ElementalStates.AF3,
     },
     "(N16.1) Double Paradox AF2": {
-      line: N161_DOUBLE_PARADOX_AF2,
+      line: N16_1_DOUBLE_PARADOX_AF2,
+      startingElement: ElementalStates.AF3,
+    },
+    "(N111) Double Transpose F3P": {
+      line: N111_DOUBLE_TRANSPOSE_F3P,
       startingElement: ElementalStates.AF3,
     },
     "(I5) 3xF4 Transpose": {

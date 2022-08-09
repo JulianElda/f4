@@ -19,6 +19,7 @@ import {
   JobActionType,
   MULTIPLIER_CAST,
   MULTIPLIER_POTENCY,
+  F3P,
 } from "consts/jobactions";
 import { ActionType } from "components/action/action";
 import Details, { DetailedAction } from "components/details/details";
@@ -88,15 +89,21 @@ export default function Calculator(props: CalculatorProps) {
       if (action.id === PD.id && isUIElement(currentElement)) {
         elementAdjustedCastTime = 0;
       }
+      // F3P is instant cast
+      else if (action.id === F3P.id) {
+        elementAdjustedCastTime = 0;
+      }
 
       // handle instant casts
-      // swiftcast is used before triplecast
-      if (swiftcastCounter > 0) {
-        swiftcastCounter = 0;
-        elementAdjustedCastTime = 0;
-      } else if (triplecastCounter > 0) {
-        triplecastCounter--;
-        elementAdjustedCastTime = 0;
+      if (action.cast > 0) {
+        // swiftcast is used before triplecast
+        if (swiftcastCounter > 0) {
+          swiftcastCounter = 0;
+          elementAdjustedCastTime = 0;
+        } else if (triplecastCounter > 0) {
+          triplecastCounter--;
+          elementAdjustedCastTime = 0;
+        }
       }
 
       // add instant cast counters
