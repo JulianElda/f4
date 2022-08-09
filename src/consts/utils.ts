@@ -1,6 +1,7 @@
 import {
   F1,
   F3,
+  F3P,
   B1,
   B3,
   PD,
@@ -84,6 +85,7 @@ export const changeCurrentElementFromAction = function (
     }
     // F3 always changes to AF3
     case F3.id:
+    case F3P.id:
       resultElement = ElementalStates.AF3;
       break;
     // B1

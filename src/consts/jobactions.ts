@@ -124,7 +124,7 @@ export const F3P: JobActionType = {
   name: "Fire III Proc",
   element: ActionElements.FIRE,
   potency: 260,
-  cast: 0,
+  cast: 2500,
   filler: false,
 };
 
