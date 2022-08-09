@@ -8,7 +8,6 @@ export type ActionType = {
 type ActionProps = {
   action: ActionType;
   click: (action: ActionType) => void;
-  additionalStyle?: string;
 };
 
 const WIDTH: string = "32";
@@ -19,7 +18,7 @@ export default function Action(props: ActionProps) {
     <img
       width={WIDTH}
       height={HEIGHT}
-      className={"inline cursor-pointer " + props.additionalStyle}
+      className="inline cursor-pointer mr-2 mb-2"
       src={props.action.icon}
       alt={props.action.name}
       onClick={() => props.click(props.action)}

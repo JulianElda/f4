@@ -18,7 +18,6 @@ export default function Sequence(props: SequenceProps) {
           <Action
             action={props.actions[i]}
             click={(_action: ActionType) => props.clickAction(i)}
-            additionalStyle="mr-1 mb-2"
           />
           <span className="mr-1 text-slate-600">&gt;</span>
         </span>

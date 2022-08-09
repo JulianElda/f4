@@ -58,3 +58,29 @@ describe("add skills to sequences", () => {
     expect(screen.getByText(XENO.id)).toBeInTheDocument();
   });
 });
+
+describe("calculate lines", () => {
+  const user = userEvent.setup();
+
+  test("(0) Standard", async () => {
+    render(<App />);
+    await user.click(screen.getByText("(0) Standard"));
+    expect(screen.getByText("5821.20 potency")).toBeInTheDocument();
+    expect(screen.getByText("34.20 s")).toBeInTheDocument();
+    expect(screen.getByText("170.21 pps")).toBeInTheDocument();
+    expect(
+      screen.getByText("B3 B4 PD F3 F4 F4 F4 PD F4 F4 F4 Desp")
+    ).toBeInTheDocument();
+  });
+
+  test("(15) Double Paradox", async () => {
+    render(<App />);
+    await user.click(screen.getByText("(15) Double Paradox"));
+    expect(screen.getByText("4923.52 potency")).toBeInTheDocument();
+    expect(screen.getByText("29.10 s")).toBeInTheDocument();
+    expect(screen.getByText("169.19 pps")).toBeInTheDocument();
+    expect(
+      screen.getByText("B3 B4 PD Tpose PD F1 F4 F4 F4 F4 Desp")
+    ).toBeInTheDocument();
+  });
+});

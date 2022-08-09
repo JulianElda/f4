@@ -24,7 +24,7 @@ export default function ActionList(props: ActionListProps) {
     <div className="my-4">
       <label className="font-semibold">Skills</label>
       <div className="bg-white shadow rounded space-y-2 mt-1 p-2">
-        <div className="space-x-2">
+        <div className="">
           <Action action={f1_action} click={props.clickAction} />
           <Action action={f3_action} click={props.clickAction} />
           <Action action={f4_action} click={props.clickAction} />
@@ -33,12 +33,8 @@ export default function ActionList(props: ActionListProps) {
           <Action action={b3_action} click={props.clickAction} />
           <Action action={b4_action} click={props.clickAction} />
           <Action action={pd_action} click={props.clickAction} />
-        </div>
-        <div className="space-x-2">
           <Action action={t3p_action} click={props.clickAction} />
           <Action action={xeno_action} click={props.clickAction} />
-        </div>
-        <div className="space-x-2">
           <Action action={tpose_action} click={props.clickAction} />
           <Action action={swiftcast_action} click={props.clickAction} />
           <Action action={triplecast_action} click={props.clickAction} />

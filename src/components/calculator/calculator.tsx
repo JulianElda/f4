@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { calculateRecast } from "consts/utils";
+import { useCallback, useEffect, useState } from "react";
+import {
+  calculateF3Potency,
+  calculateRecast,
+  changeCurrentElementFromAction,
+  isAFElement,
+  isUIElement,
+} from "consts/utils";
 import { L0_STANDARD_ROTATION } from "consts/lines";
-
 import {
   F1,
   F3,
-  B1,
-  B3,
   PD,
-  TPOSE,
   CASTER_TAX,
   ElementalStates,
   ActionElements,
@@ -45,7 +47,7 @@ export default function Calculator(props: CalculatorProps) {
 
   const [f3PProducers, setF3PProducers] = useState<number>(0);
 
-  const startCalculation = function (
+  const startCalculation = useCallback(function (
     jobActions: JobActionType[],
     sps: number,
     currentElement: ElementalStates
@@ -55,40 +57,6 @@ export default function Calculator(props: CalculatorProps) {
     let totalTime: number = 0;
     let totalDetailedActions: DetailedAction[] = [];
     let totalF3PProducers: number = 0;
-
-    const calculateF3Potency = function (howMany: number) {
-      // 40% chance of producing F3P
-      const f3pProc: number = 0.4;
-
-      // probability that multiple F1s or PDs produce at least 1 F3P
-      const procChance: number =
-        // 100%
-        1 -
-        Math.pow(
-          // probability of NOT getting a proc in one cast
-          1 - f3pProc,
-          // squared by how many casts
-          howMany
-        );
-
-      return procChance;
-    };
-
-    const isAFElement = function (elementalState: ElementalStates): boolean {
-      return (
-        elementalState === ElementalStates.AF1 ||
-        elementalState === ElementalStates.AF2 ||
-        elementalState === ElementalStates.AF3
-      );
-    };
-
-    const isUIElement = function (elementalState: ElementalStates): boolean {
-      return (
-        elementalState === ElementalStates.UI1 ||
-        elementalState === ElementalStates.UI2 ||
-        elementalState === ElementalStates.UI3
-      );
-    };
 
     for (let i = 0; i < jobActions.length; i++) {
       let action: JobActionType = jobActions[i];
@@ -169,97 +137,7 @@ export default function Calculator(props: CalculatorProps) {
       };
 
       // each action changes elemental states differently
-      switch (action.id) {
-        // F1
-        case F1.id: {
-          switch (currentElement) {
-            // change to AF1
-            case ElementalStates.UI1:
-            case ElementalStates.UI2:
-            case ElementalStates.UI3:
-              //case ElementalStates.NONE:
-              currentElement = ElementalStates.AF1;
-              break;
-            // "upgrade" AF
-            case ElementalStates.AF1:
-              currentElement = ElementalStates.AF2;
-              break;
-            case ElementalStates.AF2:
-              currentElement = ElementalStates.AF3;
-              break;
-            case ElementalStates.AF3:
-              currentElement = ElementalStates.AF3;
-              break;
-          }
-          break;
-        }
-        // F3 always changes to AF3
-        case F3.id:
-          currentElement = ElementalStates.AF3;
-          break;
-        // B1
-        case B1.id: {
-          switch (currentElement) {
-            // change to UI1
-            case ElementalStates.AF1:
-            case ElementalStates.AF2:
-            case ElementalStates.AF3:
-              //case ElementalStates.NONE:
-              currentElement = ElementalStates.UI1;
-              break;
-            // "upgrade" UI
-            case ElementalStates.UI1:
-              currentElement = ElementalStates.UI2;
-              break;
-            case ElementalStates.UI2:
-              currentElement = ElementalStates.UI3;
-              break;
-            case ElementalStates.UI3:
-              currentElement = ElementalStates.UI3;
-              break;
-          }
-          break;
-        }
-        // F3 always changes to UI3
-        case B3.id:
-          currentElement = ElementalStates.UI3;
-          break;
-        // paradox
-        case PD.id: {
-          switch (currentElement) {
-            // "upgrade" AF
-            case ElementalStates.AF1:
-              currentElement = ElementalStates.AF2;
-              break;
-            case ElementalStates.AF2:
-              currentElement = ElementalStates.AF3;
-              break;
-            case ElementalStates.AF3:
-              currentElement = ElementalStates.AF3;
-              break;
-            // "upgrade" UI
-            case ElementalStates.UI1:
-              currentElement = ElementalStates.UI2;
-              break;
-            case ElementalStates.UI2:
-              currentElement = ElementalStates.UI3;
-              break;
-            case ElementalStates.UI3:
-              currentElement = ElementalStates.UI3;
-              break;
-          }
-          break;
-        }
-
-        // Transpose
-        case TPOSE.id:
-          // AF* to UI1
-          if (isAFElement(currentElement)) currentElement = ElementalStates.UI1;
-          // UI* to AF1
-          else if (isUIElement(currentElement))
-            currentElement = ElementalStates.AF1;
-          break;
-      }
+      currentElement = changeCurrentElementFromAction(currentElement, action);
 
       totalDetailedActions.push(detailedAction);
     }
@@ -279,16 +157,17 @@ export default function Calculator(props: CalculatorProps) {
       detailedActions: totalDetailedActions,
       f3p: totalF3PProducers,
     };
-  };
+  },
+  []);
 
   const compareStandard = function (): string {
     let standardPps = standardPotency / standardTotalTime;
     let pps = potency / totalTime;
 
-    return ((pps / standardPps) * 100).toFixed(3);
+    return ((pps / standardPps) * 100).toFixed(2);
   };
 
-  // calculate standard rotation from sps
+  // calculate standard pps
   useEffect(
     function () {
       let { potency, time, f3p } = startCalculation(
@@ -300,10 +179,10 @@ export default function Calculator(props: CalculatorProps) {
       setStandardTotalTime(time);
       setF3PProducers(f3p);
     },
-    [props.sps, props.startingElement]
+    [props.sps, props.startingElement, startCalculation]
   );
 
-  // calculate from specified actions
+  // calculate line pps from specified actions
   useEffect(
     function () {
       let { potency, time, detailedActions, f3p } = startCalculation(
@@ -316,7 +195,7 @@ export default function Calculator(props: CalculatorProps) {
       setDetailedActions(detailedActions);
       setF3PProducers(f3p);
     },
-    [props.actions, props.sps, props.startingElement]
+    [props.actions, props.sps, props.startingElement, startCalculation]
   );
 
   const getDetails = function (): React.ReactNode {
@@ -347,7 +226,7 @@ export default function Calculator(props: CalculatorProps) {
       {props.actions.length >= 1 && (
         <>
           <div className="bg-white shadow rounded mt-4 p-2">
-            <p className="font-mono">{potency} potency</p>
+            <p className="font-mono">{potency.toFixed(2)} potency</p>
             <p className="font-mono">{totalTime.toFixed(2)} s</p>
             <p className="font-mono">{(potency / totalTime).toFixed(2)} pps</p>
             <p className="font-mono">{compareStandard()}% from standard</p>
