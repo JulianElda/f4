@@ -20,7 +20,7 @@ When you cast a spell longer than, or equal to, your recast time (F4, Desp, AF P
 
 When you perform Transpose lines, you need to cast "filler spells" during UI in order to get enough mp for the next fire phase.
 
-In this app, filler spells are spells you can cast anywhere in your rotation that does not change your phase. I list Xenoglossy and T3 as filler spells for visual convinience ![filler](/f4/blob/master/src/assets/images/filler.png?raw=true). These filler spells are not calculated for the line's pps.
+You can use Xenoglossy <img src="/src/assets/images/xeno.png?raw=true" width="24" />, T3P <img src="/src/assets/images/t3.png?raw=true" width="24" />, or Xeno/T3P <img src="/src/assets/images/filler.png?raw=true" width="24" /> as filler spells. These filler spells are not calculated for the line's pps.
 
 # F3P calculation
 
