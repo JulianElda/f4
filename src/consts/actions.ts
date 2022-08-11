@@ -14,6 +14,7 @@ import img_swift from "assets/images/swift.png";
 import img_triple from "assets/images/triplecast.png";
 import img_mf from "assets/images/mf.png";
 import img_lucid from "assets/images/lucid.png";
+import img_filler from "assets/images/filler.png";
 
 import { ActionType } from "components/action/action";
 import {
@@ -30,8 +31,9 @@ import {
   TPOSE,
   SWIFTCAST,
   TRIPLECAST,
-  LUCID,
   MANAFONT,
+  LUCID,
+  FILLER,
 } from "consts/jobactions";
 
 export const f1_action: ActionType = {
@@ -112,4 +114,9 @@ export const manafont_action: ActionType = {
 export const lucid_action: ActionType = {
   ...LUCID,
   icon: img_lucid,
+};
+
+export const filler_action: ActionType = {
+  ...FILLER,
+  icon: img_filler,
 };

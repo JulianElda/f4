@@ -9,6 +9,7 @@ import {
   tpose_action,
   swiftcast_action,
   f3p_action,
+  filler_action,
 } from "consts/actions";
 import { ActionType } from "components/action/action";
 
@@ -118,6 +119,8 @@ export const N16_1_DOUBLE_PARADOX_AF2: ActionType[] = [
 export const N111_DOUBLE_TRANSPOSE_F3P: ActionType[] = [
   tpose_action,
   pd_action,
+  filler_action,
+  filler_action,
   tpose_action,
   f3p_action,
   f4_action,
@@ -130,6 +133,7 @@ export const N111_DOUBLE_TRANSPOSE_F3P: ActionType[] = [
 export const I5_3xF4_TRANSPOSE: ActionType[] = [
   pd_action,
   swiftcast_action,
+  filler_action,
   f3_action,
   f4_action,
   f4_action,

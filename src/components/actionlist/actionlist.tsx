@@ -15,6 +15,7 @@ import {
   triplecast_action,
   manafont_action,
   lucid_action,
+  filler_action,
 } from "consts/actions";
 import Action, { ActionType } from "components/action/action";
 
@@ -44,6 +45,7 @@ export default function ActionList(props: ActionListProps) {
           <Action action={triplecast_action} click={props.clickAction} />
           <Action action={manafont_action} click={props.clickAction} />
           <Action action={lucid_action} click={props.clickAction} />
+          <Action action={filler_action} click={props.clickAction} />
         </div>
       </div>
     </div>

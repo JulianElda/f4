@@ -1,3 +1,5 @@
+[Website](https://julianelda.github.io/f4/)
+
 # What's this?
 
 BLM does not have a strict rotation (like DRG), or a "burst window" where you put all your hard hitting GCDs in a cooldown window (like GNB), where you intuitively know if you screw up (like RDM using Jolt when you have both procs), and know if you are doing well (SAM or GNB burst).
@@ -12,16 +14,16 @@ This app does not check if your specified line is actually possible, like castin
 
 # Caster tax
 
-When you cast a spell longer than, or equal to, your recast time (F4, Desp, AF PD), the game "clips" briefly between the spells. In the calculation, `0.1` second is added to these spell's cast time to simulate this.
+When you cast a spell longer than, or equal to, your recast time (F4, Desp, AF PD), the game "clips" briefly between the spells. In the calculation, `0.1` second is added to these spell's cast time.
 
 # Filler spells
 
 When you perform Transpose lines, you need to cast "filler spells" during UI in order to get enough mp for the next fire phase.
 
-In this app, filler spells are spells you can cast anywhere in your rotation that does not change your phase. I list Xenoglossy and T3 as filler spells for visual convinience. These filler spells are not calculated for the line's pps.
+In this app, filler spells are spells you can cast anywhere in your rotation that does not change your phase. I list Xenoglossy and T3 as filler spells for visual convinience ![filler](/f4/blob/master/src/assets/images/filler.png?raw=true). These filler spells are not calculated for the line's pps.
 
-# Some todos
+# F3P calculation
 
-- add transpose
+When casting F1 or PD in AF, each have a 40% chance of proccing an F3P. In a line, the probability of getting **at least 1 proc** is calculated with the formula `f3p_prob = 1 - ( 0.6 ^ number_of_f3_producer )`.
 
-- add Swiftcast and Triplecast
+This probability is then used to add "expected damage from f3p" to the calculation, both for potency and time. The added values are `f3p_prob * f3p_af3_potency` for potency, and `f3p_prob * sps_adjusted_gcd` for time.

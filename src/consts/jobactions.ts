@@ -248,3 +248,12 @@ export const LUCID: JobActionType = {
   cast: 0,
   filler: true,
 };
+
+export const FILLER: JobActionType = {
+  id: "Filler",
+  name: "Filler GCD",
+  element: ActionElements.UNASPECTED,
+  potency: 0,
+  cast: 0,
+  filler: true,
+};
