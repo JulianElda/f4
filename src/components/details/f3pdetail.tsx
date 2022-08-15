@@ -5,8 +5,11 @@ import {
   F3,
 } from "consts/jobactions";
 
+import { calculateRecast } from "consts/utils";
+
 type F3PDetailProps = {
   f3PProducers: number;
+  sps: number;
 };
 export default function F3PDetail(props: F3PDetailProps) {
   // 40% chance of producing F3P
@@ -41,6 +44,13 @@ export default function F3PDetail(props: F3PDetailProps) {
             F3.potency *
             MULTIPLIER_POTENCY[ActionElements.FIRE][ElementalStates.AF3]
           ).toFixed(2)}
+        </span>
+      </div>
+      <div>
+        <span>
+          Estimated time: {procChance} probability *{" "}
+          {calculateRecast(props.sps, 2500)} recast ={" "}
+          {(procChance * calculateRecast(props.sps, 2500)).toFixed(2)}
         </span>
       </div>
     </div>

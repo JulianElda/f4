@@ -27,6 +27,7 @@ import F3PDetail from "components/details/f3pdetail";
 
 type CalculatorProps = {
   actions: ActionType[];
+  f3pAdjust: boolean;
   sps: number;
   startingElement: ElementalStates;
 };
@@ -52,6 +53,7 @@ export default function Calculator(props: CalculatorProps) {
 
   const startCalculation = useCallback(function (
     jobActions: JobActionType[],
+    f3pAdjust: boolean,
     sps: number,
     currentElement: ElementalStates
   ): CalculationResult {
@@ -115,10 +117,11 @@ export default function Calculator(props: CalculatorProps) {
 
       // check F3P producers
       if (
+        f3pAdjust &&
         // AF PD
-        (action.id === PD.id && isAFElement(currentElement)) ||
-        // F1
-        (action.id === F1.id && isAFElement(currentElement))
+        ((action.id === PD.id && isAFElement(currentElement)) ||
+          // F1
+          (action.id === F1.id && isAFElement(currentElement)))
       ) {
         totalF3PProducers++;
       }
@@ -201,13 +204,14 @@ export default function Calculator(props: CalculatorProps) {
     function () {
       let { potency, time } = startCalculation(
         N0_STANDARD_ROTATION,
+        props.f3pAdjust,
         props.sps,
         ElementalStates.AF3
       );
       setStandardPotency(potency);
       setStandardTotalTime(time);
     },
-    [props.sps, startCalculation]
+    [props.f3pAdjust, props.sps, startCalculation]
   );
 
   // calculate line pps from specified actions
@@ -215,6 +219,7 @@ export default function Calculator(props: CalculatorProps) {
     function () {
       let { potency, time, detailedActions, f3p } = startCalculation(
         props.actions,
+        props.f3pAdjust,
         props.sps,
         props.startingElement
       );
@@ -223,7 +228,13 @@ export default function Calculator(props: CalculatorProps) {
       setDetailedActions(detailedActions);
       setF3PProducers(f3p);
     },
-    [props.actions, props.sps, props.startingElement, startCalculation]
+    [
+      props.actions,
+      props.f3pAdjust,
+      props.sps,
+      props.startingElement,
+      startCalculation,
+    ]
   );
 
   const getDetails = function (): React.ReactNode {
@@ -236,7 +247,9 @@ export default function Calculator(props: CalculatorProps) {
             Hide
           </label>
           <Details detailedActions={detailedActions} />
-          {f3PProducers > 0 && <F3PDetail f3PProducers={f3PProducers} />}
+          {f3PProducers > 0 && (
+            <F3PDetail sps={props.sps} f3PProducers={f3PProducers} />
+          )}
         </>
       );
     else

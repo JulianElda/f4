@@ -9,12 +9,12 @@ import Help from "components/help/help";
 import Preset from "components/preset/preset";
 import References from "components/references/references";
 import Sequence from "components/sequence/sequence";
-import SpSCalculator from "components/spscalculator/spscalculator";
-import StartElement from "components/startelement/startelement";
+import Settings from "components/settings/settings";
 
 export default function App() {
   const [actions, setActions] = useState<ActionType[]>([]);
   const [sps, setSps] = useState<number>(380);
+  const [f3pAdjust, setF3PAdjust] = useState<boolean>(true);
   const [startingElement, setStartingElement] = useState<ElementalStates>(
     ElementalStates.AF3
   );
@@ -41,16 +41,18 @@ export default function App() {
             <Sequence actions={actions} clickAction={removeActions} />
             <Calculator
               actions={actions}
+              f3pAdjust={f3pAdjust}
               sps={sps}
               startingElement={startingElement}
             />
           </div>
           <div className="col-span-2 md:col-span-1">
-            <StartElement
+            <Settings
+              setF3PAdjust={setF3PAdjust}
+              setSps={setSps}
               startingElement={startingElement}
               setStartingElement={setStartingElement}
             />
-            <SpSCalculator setSps={setSps} />
             <Preset
               setActions={setActions}
               setStartingElement={setStartingElement}
