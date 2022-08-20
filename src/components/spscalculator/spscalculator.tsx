@@ -24,7 +24,7 @@ export default function SpSCalculator(props: SpSCalculatorProps) {
         name="sps"
         value={sps}
         onChange={(event) => onChangeSps(event.target.value)}
-        className="w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 font-semibold text-sm border-gray-500 rounded-md"
+        className="input w-full"
       />
       <p className="grid grid-rows-3 mt-2 content-between">
         <span className="text-sm">

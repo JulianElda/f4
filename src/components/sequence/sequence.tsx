@@ -40,16 +40,14 @@ export default function Sequence(props: SequenceProps) {
       <label className="font-semibold">Casts</label>
       {props.actions.length === 0 && (
         <>
-          <div className="bg-white shadow rounded space-x-2 mt-1 p-2">
+          <div className="card">
             <p>Nothing specified, add actions from (Skills) or (Preset)</p>
           </div>
         </>
       )}
       {props.actions.length >= 1 && (
         <>
-          <div className="bg-white shadow rounded mt-1 p-2">
-            {getSequenceContent()}
-          </div>
+          <div className="card">{getSequenceContent()}</div>
           <p className="font-mono text-sm mx-2">{getLineNotation()}</p>
         </>
       )}

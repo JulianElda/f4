@@ -241,9 +241,7 @@ export default function Calculator(props: CalculatorProps) {
     if (showDetails)
       return (
         <>
-          <label
-            onClick={() => setShowDetails(false)}
-            className="text-sm underline decoration-dotted hover:decoration-solid cursor-pointer">
+          <label onClick={() => setShowDetails(false)} className="clickable">
             Hide
           </label>
           <Details detailedActions={detailedActions} />
@@ -254,9 +252,7 @@ export default function Calculator(props: CalculatorProps) {
       );
     else
       return (
-        <label
-          onClick={() => setShowDetails(true)}
-          className="text-sm underline decoration-dotted hover:decoration-solid cursor-pointer">
+        <label onClick={() => setShowDetails(true)} className="clickable">
           Show details
         </label>
       );
@@ -266,7 +262,7 @@ export default function Calculator(props: CalculatorProps) {
     <>
       {props.actions.length >= 1 && (
         <>
-          <div className="bg-white shadow rounded mt-4 p-2">
+          <div className="card">
             <p className="font-mono">{potency.toFixed(2)} potency</p>
             <p className="font-mono">{totalTime.toFixed(2)} s</p>
             <p className="font-mono">{(potency / totalTime).toFixed(2)} pps</p>

@@ -6,7 +6,7 @@ export default function Settings(props) {
   return (
     <div className="my-4 space-y-2">
       <label className="font-semibold">Settings</label>
-      <div className="bg-white shadow rounded space-y-2 mt-1 p-2">
+      <div className="card">
         <StartElement
           startingElement={props.startingElement}
           setStartingElement={props.setStartingElement}

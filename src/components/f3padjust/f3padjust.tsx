@@ -20,7 +20,7 @@ export default function F3PAdjust(props: F3PAdjustProps) {
         name="f3p"
         checked={f3pAdjust}
         onChange={(event) => onChangeF3PAdjust(event.target.checked)}
-        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md mr-2"
+        className="input mr-2"
       />
       <label htmlFor="f3p" className="text-sm">
         include estimated F3P pps

@@ -61,3 +61,11 @@ html {
   text-rendering: optimizeLegibility;
   font-kerning: normal;
 }
+
+a.star::after {
+  content: "*";
+  font-size: small;
+  position: relative;
+  top: -0.4rem;
+  opacity: 0.6;
+}

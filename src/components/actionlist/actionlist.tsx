@@ -27,7 +27,7 @@ export default function ActionList(props: ActionListProps) {
   return (
     <div className="my-4">
       <label className="font-semibold">Skills</label>
-      <div className="bg-white shadow rounded space-y-2 mt-1 p-2">
+      <div className="card">
         <div className="">
           <Action action={f1_action} click={props.clickAction} />
           <Action action={f3_action} click={props.clickAction} />

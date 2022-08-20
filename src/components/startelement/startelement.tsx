@@ -33,7 +33,7 @@ export default function StartElement(props: StartElementProps) {
       <select
         id="startingelement"
         name="startingelement"
-        className="w-full shadow-sm bg-white focus:ring-indigo-500 focus:border-indigo-500 font-semibold sm:text-sm border-gray-300 rounded-md"
+        className="w-full bg-white font-semibold input"
         value={startingElement}
         onChange={(e) =>
           onChangeStartingElement(e.target.value as ElementalStates)

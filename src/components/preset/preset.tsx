@@ -77,9 +77,7 @@ export default function Preset(props: PresetProps) {
   return (
     <div className="my-4">
       <label className="font-semibold">Preset lines</label>
-      <div className="bg-white shadow rounded space-y-1 mt-1 p-2">
-        {getPresets()}
-      </div>
+      <div className="card">{getPresets()}</div>
     </div>
   );
 }
@@ -95,7 +93,7 @@ type PresetItemProps = {
 function PresetItem(props: PresetItemProps) {
   return (
     <p
-      className="text-sm underline cursor-pointer"
+      className="clickable"
       onClick={() => {
         props.setActions(props.lineActions);
         props.setStartingElement(props.lineStartingElement);
