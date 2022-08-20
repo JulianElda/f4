@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/f4/static/css/main.a8360d29.css",
-    "main.js": "/f4/static/js/main.0d7190d5.js",
+    "main.css": "/f4/static/css/main.1ca25422.css",
+    "main.js": "/f4/static/js/main.d77e2d61.js",
     "static/media/Mplus1Code-SemiBold.woff2": "/f4/static/media/Mplus1Code-SemiBold.8e752f9d2e1004450384.woff2",
     "static/media/Mplus1-SemiBold.woff2": "/f4/static/media/Mplus1-SemiBold.f616eb8c154f7ed4c50b.woff2",
     "static/media/Mplus1-Regular.woff2": "/f4/static/media/Mplus1-Regular.32305f15d59759518502.woff2",
@@ -25,11 +25,11 @@
     "static/media/f4.png": "/f4/static/media/f4.4d5c78ed2f654d4aec94.png",
     "static/media/f1.png": "/f4/static/media/f1.fbee35b5b464b11c2e4b.png",
     "index.html": "/f4/index.html",
-    "main.a8360d29.css.map": "/f4/static/css/main.a8360d29.css.map",
-    "main.0d7190d5.js.map": "/f4/static/js/main.0d7190d5.js.map"
+    "main.1ca25422.css.map": "/f4/static/css/main.1ca25422.css.map",
+    "main.d77e2d61.js.map": "/f4/static/js/main.d77e2d61.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8360d29.css",
-    "static/js/main.0d7190d5.js"
+    "static/css/main.1ca25422.css",
+    "static/js/main.d77e2d61.js"
   ]
 }
