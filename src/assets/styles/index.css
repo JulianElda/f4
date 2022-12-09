@@ -34,32 +34,29 @@
   src: url("Mplus1Code-SemiBold.woff2") format("woff2");
 }
 
-$grid-color: 200;
-
 html {
+  --grid-color: 200;
   background-size: 1.75rem 1.75rem;
   background-image: linear-gradient(
       to right,
-      rgba($grid-color, $grid-color, $grid-color, 0.05) 1px,
+      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.05) 1px,
       transparent 1px
     ),
     linear-gradient(
       to bottom,
-      rgba($grid-color, $grid-color, $grid-color, 0.05) 1px,
+      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.05) 1px,
       transparent 1px
     ),
     linear-gradient(
       to top,
-      rgba($grid-color, $grid-color, $grid-color, 0.05) 1px,
+      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.05) 1px,
       transparent 1px
     ),
     linear-gradient(
       to left,
-      rgba($grid-color, $grid-color, $grid-color, 0.05) 1px,
+      rgba(var(--grid-color), var(--grid-color), var(--grid-color), 0.05) 1px,
       transparent 1px
     );
-  text-rendering: optimizeLegibility;
-  font-kerning: normal;
 }
 
 a.star::after {

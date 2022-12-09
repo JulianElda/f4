@@ -38,7 +38,10 @@ export default function App() {
         <div className="grid grid-cols-2 md:space-x-8">
           <div className="col-span-2 md:col-span-1">
             <ActionList clickAction={addActions} />
-            <Sequence actions={actions} clickAction={removeActions} />
+            <Sequence
+              actions={actions}
+              clickAction={removeActions}
+            />
             <Calculator
               actions={actions}
               f3pAdjust={f3pAdjust}

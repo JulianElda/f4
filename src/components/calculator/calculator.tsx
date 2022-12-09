@@ -241,18 +241,25 @@ export default function Calculator(props: CalculatorProps) {
     if (showDetails)
       return (
         <>
-          <label onClick={() => setShowDetails(false)} className="clickable">
+          <label
+            onClick={() => setShowDetails(false)}
+            className="clickable">
             Hide
           </label>
           <Details detailedActions={detailedActions} />
           {f3PProducers > 0 && (
-            <F3PDetail sps={props.sps} f3PProducers={f3PProducers} />
+            <F3PDetail
+              sps={props.sps}
+              f3PProducers={f3PProducers}
+            />
           )}
         </>
       );
     else
       return (
-        <label onClick={() => setShowDetails(true)} className="clickable">
+        <label
+          onClick={() => setShowDetails(true)}
+          className="clickable">
           Show details
         </label>
       );
