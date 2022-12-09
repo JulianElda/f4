@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { Dispatch, useEffect, useState } from "react";
 import { ElementalStates } from "consts/jobactions";
 
 type StartElementProps = {
   startingElement: ElementalStates;
-  setStartingElement?: Function;
+  setStartingElement?: Dispatch<ElementalStates>;
 };
 
 export default function StartElement(props: StartElementProps) {
@@ -27,7 +27,9 @@ export default function StartElement(props: StartElementProps) {
 
   return (
     <div className="w-full">
-      <label htmlFor="startingelement" className="text-sm">
+      <label
+        htmlFor="startingelement"
+        className="text-sm">
         Starting element
       </label>
       <select

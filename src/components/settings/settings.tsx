@@ -1,8 +1,18 @@
+import { ElementalStates } from "consts/jobactions";
+
 import F3PAdjust from "components/f3padjust/f3padjust";
 import SpSCalculator from "components/spscalculator/spscalculator";
 import StartElement from "components/startelement/startelement";
+import { Dispatch } from "react";
 
-export default function Settings(props) {
+type SettingsProps = {
+  startingElement: ElementalStates;
+  setStartingElement: Dispatch<ElementalStates>;
+  setF3PAdjust: Dispatch<boolean>;
+  setSps: Dispatch<number>;
+};
+
+export default function Settings(props: SettingsProps) {
   return (
     <div className="my-4 space-y-2">
       <label className="font-semibold">Settings</label>

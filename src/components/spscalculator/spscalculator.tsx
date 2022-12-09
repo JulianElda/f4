@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { Dispatch, useState } from "react";
 import { calculateRecast } from "consts/utils";
 
 type SpSCalculatorProps = {
-  setSps?: Function;
+  setSps?: Dispatch<number>;
 };
 
 export default function SpSCalculator(props: SpSCalculatorProps) {
@@ -15,7 +15,9 @@ export default function SpSCalculator(props: SpSCalculatorProps) {
 
   return (
     <div>
-      <label htmlFor="sps" className="text-sm">
+      <label
+        htmlFor="sps"
+        className="text-sm">
         Spellspeed
       </label>
       <input

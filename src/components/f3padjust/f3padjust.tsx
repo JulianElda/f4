@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { Dispatch, useState } from "react";
 
 type F3PAdjustProps = {
-  setF3PAdjust?: Function;
+  setF3PAdjust?: Dispatch<boolean>;
 };
 
 export default function F3PAdjust(props: F3PAdjustProps) {
@@ -22,7 +22,9 @@ export default function F3PAdjust(props: F3PAdjustProps) {
         onChange={(event) => onChangeF3PAdjust(event.target.checked)}
         className="input mr-2"
       />
-      <label htmlFor="f3p" className="text-sm">
+      <label
+        htmlFor="f3p"
+        className="text-sm">
         include estimated F3P pps
       </label>
     </div>

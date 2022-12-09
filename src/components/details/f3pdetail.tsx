@@ -13,7 +13,7 @@ type F3PDetailProps = {
 };
 export default function F3PDetail(props: F3PDetailProps) {
   // 40% chance of producing F3P
-  const f3pProc: number = 0.4;
+  const f3pProc = 0.4;
   const procChance: number =
     // 100%
     1 -

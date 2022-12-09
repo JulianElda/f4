@@ -11,13 +11,13 @@ type SequenceProps = {
 export default function Sequence(props: SequenceProps) {
   // loop through given actions
   const getSequenceContent = function (): React.ReactNode {
-    let content: React.ReactNode[] = [];
+    const content: React.ReactNode[] = [];
     for (let i = 0; i < props.actions.length; i++) {
       content.push(
         <span key={Math.random() * 100 + "" + i}>
           <Action
             action={props.actions[i]}
-            click={(_action: ActionType) => props.clickAction(i)}
+            click={() => props.clickAction(i)}
           />
           <span className="mr-1 text-slate-600">&gt;</span>
         </span>

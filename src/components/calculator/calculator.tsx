@@ -57,34 +57,33 @@ export default function Calculator(props: CalculatorProps) {
     sps: number,
     currentElement: ElementalStates
   ): CalculationResult {
-    //let currentElement: ElementalStates = ElementalStates.AF3;
-    let totalPotency: number = 0;
-    let totalTime: number = 0;
-    let totalDetailedActions: DetailedAction[] = [];
-    let totalF3PProducers: number = 0;
+    //const currentElement: ElementalStates = ElementalStates.AF3;
+    let totalPotency = 0;
+    let totalTime = 0;
+    const totalDetailedActions: DetailedAction[] = [];
+    let totalF3PProducers = 0;
 
-    let swiftcastCounter: number = 0;
-    let triplecastCounter: number = 0;
+    let swiftcastCounter = 0;
+    let triplecastCounter = 0;
 
     for (let i = 0; i < jobActions.length; i++) {
-      let action: JobActionType = jobActions[i];
-      let detailedAction: DetailedAction;
-      let potencyMultiplier: number =
+      const action: JobActionType = jobActions[i];
+      const potencyMultiplier: number =
         MULTIPLIER_POTENCY[action.element][currentElement];
-      let castMultiplier: number =
+      const castMultiplier: number =
         MULTIPLIER_CAST[action.element][currentElement];
 
       // cast speed based on sps
-      let spsAdjustedCast = calculateRecast(sps, action.cast) * 1000;
+      const spsAdjustedCast = calculateRecast(sps, action.cast) * 1000;
       // gcd based on sps
-      let spsAdjustedRecast = calculateRecast(sps, 2500) * 1000;
+      const spsAdjustedRecast = calculateRecast(sps, 2500) * 1000;
 
       // multiply based on AF or UI
       let elementAdjustedCastTime: number = spsAdjustedCast * castMultiplier;
-      let elementAdjustedPotency: number = action.potency * potencyMultiplier;
+      const elementAdjustedPotency: number = action.potency * potencyMultiplier;
 
-      let tmpPotency: number = 0;
-      let tmpTime: number = 0;
+      let tmpPotency = 0;
+      let tmpTime = 0;
 
       // handle some exceptions
       // PD on UI is instant cast
@@ -154,7 +153,7 @@ export default function Calculator(props: CalculatorProps) {
       totalPotency += tmpPotency;
       totalTime += tmpTime;
 
-      detailedAction = {
+      const detailedAction: DetailedAction = {
         name: action.name,
         filler: action.filler,
         currentElement: currentElement,
@@ -193,8 +192,8 @@ export default function Calculator(props: CalculatorProps) {
   []);
 
   const compareStandard = function (): string {
-    let standardPps = standardPotency / standardTotalTime;
-    let pps = potency / totalTime;
+    const standardPps = standardPotency / standardTotalTime;
+    const pps = potency / totalTime;
 
     return ((pps / standardPps) * 100).toFixed(2);
   };
@@ -202,7 +201,7 @@ export default function Calculator(props: CalculatorProps) {
   // calculate standard pps
   useEffect(
     function () {
-      let { potency, time } = startCalculation(
+      const { potency, time } = startCalculation(
         N0_STANDARD_ROTATION,
         props.f3pAdjust,
         props.sps,
@@ -217,7 +216,7 @@ export default function Calculator(props: CalculatorProps) {
   // calculate line pps from specified actions
   useEffect(
     function () {
-      let { potency, time, detailedActions, f3p } = startCalculation(
+      const { potency, time, detailedActions, f3p } = startCalculation(
         props.actions,
         props.f3pAdjust,
         props.sps,

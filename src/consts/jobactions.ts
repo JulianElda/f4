@@ -1,8 +1,8 @@
 // when you cast spell longer than base GCD
-export const CASTER_TAX: number = 100;
+export const CASTER_TAX = 100;
 
 // when you clip oGCD between GCDs
-export const OGCD_CLIP: number = 700;
+export const OGCD_CLIP = 700;
 
 export type JobActionType = {
   // shown in sequence lines

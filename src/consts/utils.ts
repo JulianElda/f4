@@ -12,7 +12,7 @@ import {
 
 export const calculateF3Potency = function (howMany: number) {
   // 40% chance of producing F3P
-  const f3pProc: number = 0.4;
+  const f3pProc = 0.4;
 
   // probability that multiple F1s or PDs produce at least 1 F3P
   const procChance: number =
@@ -28,10 +28,7 @@ export const calculateF3Potency = function (howMany: number) {
   return procChance;
 };
 
-export const calculateRecast = function (
-  input: number,
-  base: number = 2500
-): number {
+export const calculateRecast = function (input: number, base = 2500): number {
   if (input < 400) input = 400;
   return (
     (100 * ((base * (1000 - (130 * (input - 400)) / 1900)) / 1000 / 1000)) / 100

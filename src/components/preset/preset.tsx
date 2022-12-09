@@ -1,4 +1,4 @@
-import { ActionType } from "components/action/action";
+import { Dispatch } from "react";
 import { ElementalStates } from "consts/jobactions";
 import {
   N0_STANDARD_ROTATION,
@@ -11,6 +11,7 @@ import {
   N111_DOUBLE_TRANSPOSE_F3P,
   I5_3xF4_TRANSPOSE,
 } from "consts/lines";
+import { ActionType } from "components/action/action";
 
 type PresetLine = {
   line: ActionType[];
@@ -18,8 +19,8 @@ type PresetLine = {
 };
 
 type PresetProps = {
-  setActions: Function;
-  setStartingElement: Function;
+  setActions: Dispatch<ActionType[]>;
+  setStartingElement: Dispatch<ElementalStates>;
 };
 
 export default function Preset(props: PresetProps) {
@@ -58,8 +59,8 @@ export default function Preset(props: PresetProps) {
   };
 
   const getPresets = function (): React.ReactNode {
-    let content: React.ReactNode[] = [];
-    for (let key in PRESET_LINES) {
+    const content: React.ReactNode[] = [];
+    for (const key in PRESET_LINES) {
       content.push(
         <PresetItem
           key={key}
@@ -86,8 +87,8 @@ type PresetItemProps = {
   lineName: string;
   lineActions: ActionType[];
   lineStartingElement: ElementalStates;
-  setActions: Function;
-  setStartingElement: Function;
+  setActions: Dispatch<ActionType[]>;
+  setStartingElement: Dispatch<ElementalStates>;
 };
 
 function PresetItem(props: PresetItemProps) {

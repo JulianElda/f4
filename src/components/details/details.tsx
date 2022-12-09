@@ -20,9 +20,14 @@ type DetailsProps = {
 
 export default function Details(props: DetailsProps) {
   const getDetailsContent = function (): React.ReactNode {
-    let content: React.ReactNode[] = [];
+    const content: React.ReactNode[] = [];
     props.detailedActions.forEach(function (detailedAction: DetailedAction) {
-      content.push(<Detail key={Math.random() * 100} {...detailedAction} />);
+      content.push(
+        <Detail
+          key={Math.random() * 100}
+          {...detailedAction}
+        />
+      );
     });
     return content;
   };
@@ -31,9 +36,9 @@ export default function Details(props: DetailsProps) {
 }
 
 function Detail(props: DetailedAction) {
-  const POTENCY_HEADING: string = "Potency:";
-  const CAST_HEADING: string = "Time:";
-  const CASTER_TAX_TEXT: string = "0.1 caster tax";
+  const POTENCY_HEADING = "Potency:";
+  const CAST_HEADING = "Time:";
+  const CASTER_TAX_TEXT = "0.1 caster tax";
 
   const getPotency = function (): React.ReactNode {
     if (props.potencyMultiplier === 1) {
