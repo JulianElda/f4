@@ -5,15 +5,12 @@
   "homepage": "https://julianelda.github.io/f4/",
   "type": "module",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
     "dev": "vite",
-    "vite:build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +48,7 @@
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.2.0",
+    "@vitest/coverage-c8": "^0.25.6",
     "autoprefixer": "^10.4.13",
     "gh-pages": "^4.0.0",
     "postcss": "^8.4.19",
@@ -59,6 +57,7 @@
     "tailwindcss": "^3.2.4",
     "typescript": "^4.7.4",
     "vite": "^3.2.5",
-    "vite-tsconfig-paths": "^4.0.1"
+    "vite-tsconfig-paths": "^4.0.1",
+    "vitest": "^0.25.6"
   }
 }

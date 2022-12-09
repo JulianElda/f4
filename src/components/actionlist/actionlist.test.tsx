@@ -7,7 +7,7 @@ import ActionList from "./actionlist";
 
 test("render actions", async () => {
   const user = userEvent.setup();
-  const mockClick = jest.fn();
+  const mockClick = vi.fn();
 
   render(<ActionList clickAction={mockClick} />);
 
