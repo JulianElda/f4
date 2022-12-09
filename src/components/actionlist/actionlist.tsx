@@ -21,6 +21,7 @@ import {
   filler_action,
 } from "consts/actions";
 import Action, { ActionType } from "components/action/action";
+import classes from "assets/styles/globals.module.css";
 
 export default function ActionList() {
   const dispatch = useAppDispatch();
@@ -32,7 +33,7 @@ export default function ActionList() {
   return (
     <div className="my-4">
       <label className="font-semibold">Skills</label>
-      <div className="card">
+      <div className={classes.card}>
         <div className="">
           <Action
             action={f1_action}

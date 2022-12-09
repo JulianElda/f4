@@ -1,0 +1,3 @@
+.details {
+  @apply text-xs font-mono px-2;
+}

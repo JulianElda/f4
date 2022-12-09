@@ -4,8 +4,9 @@ import {
   ActionElements,
   F3,
 } from "consts/jobactions";
-
 import { calculateRecast } from "consts/utils";
+
+import classes from "./f3pdetail.module.css";
 
 type F3PDetailProps = {
   f3PProducers: number;
@@ -25,7 +26,7 @@ export default function F3PDetail(props: F3PDetailProps) {
     );
 
   return (
-    <div className="text-xs font-mono px-2 mt-2">
+    <div className={classes.f3pdetail}>
       <div>
         <span className="font-semibold">
           Fire III producers: {props.f3PProducers}

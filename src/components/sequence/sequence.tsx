@@ -2,6 +2,8 @@ import { useAppDispatch, useAppSelector } from "store/hooks";
 import { getActions, removeActionFromIndex } from "store/actions";
 import Action, { ActionType } from "components/action/action";
 
+import classes from "assets/styles/globals.module.css";
+
 /**
  * show specified line
  */
@@ -41,14 +43,14 @@ export default function Sequence() {
       <label className="font-semibold">Casts</label>
       {actions.length === 0 && (
         <>
-          <div className="card">
+          <div className={classes.card}>
             <p>Nothing specified, add actions from (Skills) or (Preset)</p>
           </div>
         </>
       )}
       {actions.length >= 1 && (
         <>
-          <div className="card">{getSequenceContent()}</div>
+          <div className={classes.card}>{getSequenceContent()}</div>
           <p className="font-mono text-sm mx-2">{getLineNotation()}</p>
         </>
       )}

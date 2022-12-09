@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.card {
-  @apply bg-white shadow rounded space-y-1 mt-1 p-2;
-}
-
-.clickable {
-  @apply text-sm underline cursor-pointer decoration-dotted hover:decoration-solid;
-}
-
 .link {
   @apply text-sm cursor-pointer hover:bg-sky-100;
 }

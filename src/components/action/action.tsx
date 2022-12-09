@@ -1,5 +1,7 @@
 import { JobActionType } from "consts/jobactions";
 
+import classes from "./action.module.css";
+
 // extend JobActionType with additional icon
 export type ActionType = {
   icon: string;
@@ -18,7 +20,7 @@ export default function Action(props: ActionProps) {
     <img
       width={WIDTH}
       height={HEIGHT}
-      className="inline cursor-pointer mr-2 mb-2"
+      className={classes.action}
       src={props.action.icon}
       alt={props.action.name}
       onClick={() => props.click(props.action)}

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppSelector } from "store/hooks";
-import { getF3p, getSps } from "store/config";
-import { getStartingElement } from "store/config";
+import { getActions } from "store/actions";
+import { getF3p, getSps, getStartingElement } from "store/config";
 
 import {
   calculateF3Potency,
@@ -26,8 +26,9 @@ import {
   F3P,
 } from "consts/jobactions";
 import Details, { DetailedAction } from "components/details/details";
-import F3PDetail from "components/details/f3pdetail";
-import { getActions } from "store/actions";
+import F3PDetail from "components/f3pdetail/f3pdetail";
+
+import classes from "assets/styles/globals.module.css";
 
 type CalculationResult = {
   potency: number;
@@ -237,7 +238,7 @@ export default function Calculator() {
         <>
           <label
             onClick={() => setShowDetails(false)}
-            className="clickable">
+            className={classes.clickable}>
             Hide
           </label>
           <Details detailedActions={detailedActions} />
@@ -253,7 +254,7 @@ export default function Calculator() {
       return (
         <label
           onClick={() => setShowDetails(true)}
-          className="clickable">
+          className={classes.clickable}>
           Show details
         </label>
       );
@@ -263,7 +264,7 @@ export default function Calculator() {
     <>
       {actions.length >= 1 && (
         <>
-          <div className="card">
+          <div className={classes.card}>
             <p className="font-mono">{potency.toFixed(2)} potency</p>
             <p className="font-mono">{totalTime.toFixed(2)} s</p>
             <p className="font-mono">{(potency / totalTime).toFixed(2)} pps</p>

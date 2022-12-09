@@ -7,23 +7,23 @@ import References from "components/references/references";
 import Sequence from "components/sequence/sequence";
 import Settings from "components/settings/settings";
 
+import classes from "./app.module.css";
+
 export default function App() {
   return (
-    <div className="min-h-full flex flex-col max-w-4xl mx-auto py-4">
-      <div className="w-full">
-        <Header />
-        <div className="grid grid-cols-2 md:space-x-8">
-          <div className="col-span-2 md:col-span-1">
-            <ActionList />
-            <Sequence />
-            <Calculator />
-          </div>
-          <div className="col-span-2 md:col-span-1">
-            <Settings />
-            <Preset />
-            <Help />
-            <References />
-          </div>
+    <div className={classes.app}>
+      <Header />
+      <div className={classes.container}>
+        <div className={classes.column}>
+          <ActionList />
+          <Sequence />
+          <Calculator />
+        </div>
+        <div className={classes.column}>
+          <Settings />
+          <Preset />
+          <Help />
+          <References />
         </div>
       </div>
     </div>

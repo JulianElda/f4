@@ -1,8 +1,10 @@
+import classes from "assets/styles/globals.module.css";
+
 export default function References() {
   return (
     <div className="my-4">
       <label className="font-semibold">References</label>
-      <div className="card">
+      <div className={classes.card}>
         <p>
           <a
             className="link star"

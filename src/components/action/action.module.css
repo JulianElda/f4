@@ -1,0 +1,3 @@
+.action {
+  @apply inline cursor-pointer mr-2 mb-2;
+}

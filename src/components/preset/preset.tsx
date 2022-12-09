@@ -16,6 +16,8 @@ import {
 } from "consts/lines";
 import { ActionType } from "components/action/action";
 
+import classes from "assets/styles/globals.module.css";
+
 type PresetLine = {
   line: ActionType[];
   startingElement: ElementalStates;
@@ -64,7 +66,7 @@ export default function Preset() {
       content.push(
         <p
           key={key}
-          className="clickable"
+          className={classes.clickable}
           onClick={() => {
             dispatch(setActions(PRESET_LINES[key].line));
             dispatch(setStartingElement(PRESET_LINES[key].startingElement));
@@ -79,7 +81,7 @@ export default function Preset() {
   return (
     <div className="my-4">
       <label className="font-semibold">Preset lines</label>
-      <div className="card">{getPresets()}</div>
+      <div className={classes.card}>{getPresets()}</div>
     </div>
   );
 }
