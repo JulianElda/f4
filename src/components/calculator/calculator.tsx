@@ -1,4 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
+import { useAppSelector } from "store/hooks";
+import { getf3p } from "store/f3p";
+import { getSps } from "store/sps";
+import { getStartingElement } from "store/startingElement";
+
 import {
   calculateF3Potency,
   calculateRecast,
@@ -21,16 +26,9 @@ import {
   MULTIPLIER_POTENCY,
   F3P,
 } from "consts/jobactions";
-import { ActionType } from "components/action/action";
 import Details, { DetailedAction } from "components/details/details";
 import F3PDetail from "components/details/f3pdetail";
-
-type CalculatorProps = {
-  actions: ActionType[];
-  f3pAdjust: boolean;
-  sps: number;
-  startingElement: ElementalStates;
-};
+import { getActions } from "store/actions";
 
 type CalculationResult = {
   potency: number;
@@ -39,7 +37,12 @@ type CalculationResult = {
   f3p: number;
 };
 
-export default function Calculator(props: CalculatorProps) {
+export default function Calculator() {
+  const actions = useAppSelector(getActions);
+  const f3pAdjust = useAppSelector(getf3p);
+  const sps = useAppSelector(getSps);
+  const startingElement = useAppSelector(getStartingElement);
+
   const [potency, setPotency] = useState<number>(0);
   const [totalTime, setTotalTime] = useState<number>(0);
   const [detailedActions, setDetailedActions] = useState<DetailedAction[]>([]);
@@ -48,7 +51,6 @@ export default function Calculator(props: CalculatorProps) {
   const [standardTotalTime, setStandardTotalTime] = useState<number>(0);
 
   const [showDetails, setShowDetails] = useState<boolean>(false);
-
   const [f3PProducers, setF3PProducers] = useState<number>(0);
 
   const startCalculation = useCallback(function (
@@ -203,37 +205,31 @@ export default function Calculator(props: CalculatorProps) {
     function () {
       const { potency, time } = startCalculation(
         N0_STANDARD_ROTATION,
-        props.f3pAdjust,
-        props.sps,
+        f3pAdjust,
+        sps,
         ElementalStates.AF3
       );
       setStandardPotency(potency);
       setStandardTotalTime(time);
     },
-    [props.f3pAdjust, props.sps, startCalculation]
+    [f3pAdjust, sps, startCalculation]
   );
 
   // calculate line pps from specified actions
   useEffect(
     function () {
       const { potency, time, detailedActions, f3p } = startCalculation(
-        props.actions,
-        props.f3pAdjust,
-        props.sps,
-        props.startingElement
+        actions,
+        f3pAdjust,
+        sps,
+        startingElement
       );
       setPotency(potency);
       setTotalTime(time);
       setDetailedActions(detailedActions);
       setF3PProducers(f3p);
     },
-    [
-      props.actions,
-      props.f3pAdjust,
-      props.sps,
-      props.startingElement,
-      startCalculation,
-    ]
+    [actions, f3pAdjust, sps, startingElement, startCalculation]
   );
 
   const getDetails = function (): React.ReactNode {
@@ -248,7 +244,7 @@ export default function Calculator(props: CalculatorProps) {
           <Details detailedActions={detailedActions} />
           {f3PProducers > 0 && (
             <F3PDetail
-              sps={props.sps}
+              sps={sps}
               f3PProducers={f3PProducers}
             />
           )}
@@ -266,7 +262,7 @@ export default function Calculator(props: CalculatorProps) {
 
   return (
     <>
-      {props.actions.length >= 1 && (
+      {actions.length >= 1 && (
         <>
           <div className="card">
             <p className="font-mono">{potency.toFixed(2)} potency</p>

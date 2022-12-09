@@ -1,3 +1,6 @@
+import { useAppDispatch } from "store/hooks";
+import { addAction } from "store/actions";
+
 import {
   f1_action,
   f3_action,
@@ -19,11 +22,13 @@ import {
 } from "consts/actions";
 import Action, { ActionType } from "components/action/action";
 
-type ActionListProps = {
-  clickAction: (action: ActionType) => void;
-};
+export default function ActionList() {
+  const dispatch = useAppDispatch();
 
-export default function ActionList(props: ActionListProps) {
+  const onClickAction = (action: ActionType) => {
+    dispatch(addAction(action));
+  };
+
   return (
     <div className="my-4">
       <label className="font-semibold">Skills</label>
@@ -31,71 +36,71 @@ export default function ActionList(props: ActionListProps) {
         <div className="">
           <Action
             action={f1_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={f3_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={f4_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={d_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={b1_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={b3_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={b4_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={pd_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={f3p_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={t3p_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={xeno_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={tpose_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={swiftcast_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={triplecast_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={manafont_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={lucid_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
           <Action
             action={filler_action}
-            click={props.clickAction}
+            click={onClickAction}
           />
         </div>
       </div>

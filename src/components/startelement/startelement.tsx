@@ -1,29 +1,17 @@
-import { Dispatch, useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { getStartingElement, setStartingElement } from "store/startingElement";
 import { ElementalStates } from "consts/jobactions";
 
-type StartElementProps = {
-  startingElement: ElementalStates;
-  setStartingElement?: Dispatch<ElementalStates>;
-};
+export default function StartElement() {
+  const dispatch = useAppDispatch();
 
-export default function StartElement(props: StartElementProps) {
-  const [startingElement, setStartingElement] = useState<ElementalStates>(
-    props.startingElement
-  );
+  const startingElement = useAppSelector(getStartingElement);
 
   const onChangeStartingElement = function (
     newStartingElement: ElementalStates
   ) {
-    setStartingElement(newStartingElement);
-    props.setStartingElement?.(newStartingElement);
+    dispatch(setStartingElement(newStartingElement));
   };
-
-  useEffect(
-    function () {
-      setStartingElement(props.startingElement);
-    },
-    [props.startingElement]
-  );
 
   return (
     <div className="w-full">

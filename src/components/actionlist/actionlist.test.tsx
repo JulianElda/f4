@@ -9,7 +9,7 @@ test("render actions", async () => {
   const user = userEvent.setup();
   const mockClick = vi.fn();
 
-  render(<ActionList clickAction={mockClick} />);
+  render(<ActionList />);
 
   expect(screen.getByAltText(f3_action.name)).toBeInTheDocument();
   await user.click(screen.getByAltText(f3_action.name));

@@ -1,23 +1,24 @@
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { getActions, removeActionFromIndex } from "store/actions";
 import Action, { ActionType } from "components/action/action";
-
-type SequenceProps = {
-  actions: ActionType[];
-  clickAction: (index: number) => void;
-};
 
 /**
  * show specified line
  */
-export default function Sequence(props: SequenceProps) {
+export default function Sequence() {
+  const dispatch = useAppDispatch();
+
+  const actions = useAppSelector(getActions);
+
   // loop through given actions
   const getSequenceContent = function (): React.ReactNode {
     const content: React.ReactNode[] = [];
-    for (let i = 0; i < props.actions.length; i++) {
+    for (let i = 0; i < actions.length; i++) {
       content.push(
         <span key={Math.random() * 100 + "" + i}>
           <Action
-            action={props.actions[i]}
-            click={() => props.clickAction(i)}
+            action={actions[i]}
+            click={() => dispatch(removeActionFromIndex(i))}
           />
           <span className="mr-1 text-slate-600">&gt;</span>
         </span>
@@ -28,7 +29,7 @@ export default function Sequence(props: SequenceProps) {
   };
 
   const getLineNotation = function (): React.ReactNode {
-    return props.actions
+    return actions
       .map(function (action: ActionType) {
         return action.id;
       })
@@ -38,14 +39,14 @@ export default function Sequence(props: SequenceProps) {
   return (
     <div className="my-4">
       <label className="font-semibold">Casts</label>
-      {props.actions.length === 0 && (
+      {actions.length === 0 && (
         <>
           <div className="card">
             <p>Nothing specified, add actions from (Skills) or (Preset)</p>
           </div>
         </>
       )}
-      {props.actions.length >= 1 && (
+      {actions.length >= 1 && (
         <>
           <div className="card">{getSequenceContent()}</div>
           <p className="font-mono text-sm mx-2">{getLineNotation()}</p>

@@ -1,16 +1,14 @@
-import { Dispatch, useState } from "react";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { getSps, setSps } from "store/sps";
 import { calculateRecast } from "consts/utils";
 
-type SpSCalculatorProps = {
-  setSps?: Dispatch<number>;
-};
+export default function SpSCalculator() {
+  const dispatch = useAppDispatch();
 
-export default function SpSCalculator(props: SpSCalculatorProps) {
-  const [sps, setSps] = useState<number>(380);
+  const sps = useAppSelector(getSps);
 
   const onChangeSps = function (newSps) {
-    setSps(newSps);
-    props.setSps?.(newSps);
+    dispatch(setSps(newSps));
   };
 
   return (

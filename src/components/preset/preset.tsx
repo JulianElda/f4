@@ -1,4 +1,7 @@
-import { Dispatch } from "react";
+import { useAppDispatch } from "store/hooks";
+import { setActions } from "store/actions";
+import { setStartingElement } from "store/startingElement";
+
 import { ElementalStates } from "consts/jobactions";
 import {
   N0_STANDARD_ROTATION,
@@ -18,12 +21,9 @@ type PresetLine = {
   startingElement: ElementalStates;
 };
 
-type PresetProps = {
-  setActions: Dispatch<ActionType[]>;
-  setStartingElement: Dispatch<ElementalStates>;
-};
+export default function Preset() {
+  const dispatch = useAppDispatch();
 
-export default function Preset(props: PresetProps) {
   const PRESET_LINES: { [id: string]: PresetLine } = {
     Clear: { line: [], startingElement: ElementalStates.AF3 },
     "(N0) Standard": {
@@ -62,14 +62,15 @@ export default function Preset(props: PresetProps) {
     const content: React.ReactNode[] = [];
     for (const key in PRESET_LINES) {
       content.push(
-        <PresetItem
+        <p
           key={key}
-          lineName={key}
-          lineActions={PRESET_LINES[key].line}
-          lineStartingElement={PRESET_LINES[key].startingElement}
-          setActions={props.setActions}
-          setStartingElement={props.setStartingElement}
-        />
+          className="clickable"
+          onClick={() => {
+            dispatch(setActions(PRESET_LINES[key].line));
+            dispatch(setStartingElement(PRESET_LINES[key].startingElement));
+          }}>
+          {key}
+        </p>
       );
     }
     return content;
@@ -80,26 +81,5 @@ export default function Preset(props: PresetProps) {
       <label className="font-semibold">Preset lines</label>
       <div className="card">{getPresets()}</div>
     </div>
-  );
-}
-
-type PresetItemProps = {
-  lineName: string;
-  lineActions: ActionType[];
-  lineStartingElement: ElementalStates;
-  setActions: Dispatch<ActionType[]>;
-  setStartingElement: Dispatch<ElementalStates>;
-};
-
-function PresetItem(props: PresetItemProps) {
-  return (
-    <p
-      className="clickable"
-      onClick={() => {
-        props.setActions(props.lineActions);
-        props.setStartingElement(props.lineStartingElement);
-      }}>
-      {props.lineName}
-    </p>
   );
 }

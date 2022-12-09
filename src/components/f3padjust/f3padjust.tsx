@@ -1,15 +1,12 @@
-import { Dispatch, useState } from "react";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { getf3p, setf3p } from "store/f3p";
 
-type F3PAdjustProps = {
-  setF3PAdjust?: Dispatch<boolean>;
-};
-
-export default function F3PAdjust(props: F3PAdjustProps) {
-  const [f3pAdjust, setF3PAdjust] = useState<boolean>(true);
+export default function F3PAdjust() {
+  const dispatch = useAppDispatch();
+  const f3pAdjust = useAppSelector(getf3p);
 
   const onChangeF3PAdjust = function (newF3PAdjust) {
-    setF3PAdjust(newF3PAdjust);
-    props.setF3PAdjust?.(newF3PAdjust);
+    dispatch(setf3p(newF3PAdjust));
   };
 
   return (

@@ -5,7 +5,7 @@ import { ElementalStates } from "consts/jobactions";
 import StartElement from "./startelement";
 
 test("select starting element", async () => {
-  render(<StartElement startingElement={ElementalStates.AF3} />);
+  render(<StartElement />);
   const startingElement = screen.getByLabelText("Starting element");
 
   const user = userEvent.setup();
