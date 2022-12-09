@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { getSps, setSps } from "store/sps";
+import { getSps, setSps } from "store/config";
 import { calculateRecast } from "consts/utils";
 
 export default function SpSCalculator() {

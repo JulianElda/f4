@@ -1,12 +1,12 @@
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { getf3p, setf3p } from "store/f3p";
+import { getF3p, setF3p } from "store/config";
 
 export default function F3PAdjust() {
   const dispatch = useAppDispatch();
-  const f3pAdjust = useAppSelector(getf3p);
+  const f3pAdjust = useAppSelector(getF3p);
 
   const onChangeF3PAdjust = function (newF3PAdjust) {
-    dispatch(setf3p(newF3PAdjust));
+    dispatch(setF3p(newF3PAdjust));
   };
 
   return (

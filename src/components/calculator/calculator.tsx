@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useAppSelector } from "store/hooks";
-import { getf3p } from "store/f3p";
-import { getSps } from "store/sps";
-import { getStartingElement } from "store/startingElement";
+import { getF3p, getSps } from "store/config";
+import { getStartingElement } from "store/config";
 
 import {
   calculateF3Potency,
@@ -39,7 +38,7 @@ type CalculationResult = {
 
 export default function Calculator() {
   const actions = useAppSelector(getActions);
-  const f3pAdjust = useAppSelector(getf3p);
+  const f3pAdjust = useAppSelector(getF3p);
   const sps = useAppSelector(getSps);
   const startingElement = useAppSelector(getStartingElement);
 

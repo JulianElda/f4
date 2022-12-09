@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "store/hooks";
-import { getStartingElement, setStartingElement } from "store/startingElement";
+import { getStartingElement, setStartingElement } from "store/config";
 import { ElementalStates } from "consts/jobactions";
 
 export default function StartElement() {

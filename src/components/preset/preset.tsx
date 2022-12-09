@@ -1,6 +1,6 @@
 import { useAppDispatch } from "store/hooks";
 import { setActions } from "store/actions";
-import { setStartingElement } from "store/startingElement";
+import { setStartingElement } from "store/config";
 
 import { ElementalStates } from "consts/jobactions";
 import {

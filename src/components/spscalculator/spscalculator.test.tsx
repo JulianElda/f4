@@ -1,11 +1,16 @@
+import { Provider } from "react-redux";
+import { store } from "store/store";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import SpSCalculator from "./spscalculator";
 
-const user = userEvent.setup();
 test("calculate base spellspeed", () => {
-  render(<SpSCalculator />);
+  render(
+    <Provider store={store}>
+      <SpSCalculator />
+    </Provider>
+  );
 
   const base25Cast = screen.getByText(/2.50/);
   expect(base25Cast).toBeInTheDocument();
@@ -19,11 +24,16 @@ test("calculate base spellspeed", () => {
 
 // crit bis
 test("calculate 1352 spellspeed", async () => {
-  render(<SpSCalculator />);
+  render(
+    <Provider store={store}>
+      <SpSCalculator />
+    </Provider>
+  );
 
   const inputElement = screen.getByLabelText("Spellspeed");
-  user.clear(inputElement);
 
+  const user = userEvent.setup();
+  await user.clear(inputElement);
   await user.type(inputElement, "1352");
 
   const base25Cast = screen.getByText(/2.34/);
@@ -38,11 +48,16 @@ test("calculate 1352 spellspeed", async () => {
 
 // sps bis
 test("calculate 2171 spellspeed", async () => {
-  render(<SpSCalculator />);
+  render(
+    <Provider store={store}>
+      <SpSCalculator />
+    </Provider>
+  );
 
   const inputElement = screen.getByLabelText("Spellspeed");
-  user.clear(inputElement);
 
+  const user = userEvent.setup();
+  await user.clear(inputElement);
   await user.type(inputElement, "2171");
 
   const base25Cast = screen.getByText(/2.20/);

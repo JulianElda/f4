@@ -1,15 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import actionsReducer from "store/actions";
-import f3pReducer from "store/f3p";
-import spsReducer from "store/sps";
-import startingElementReducer from "store/startingElement";
+import configReducer from "store/config";
 
 export const store = configureStore({
   reducer: {
     actions: actionsReducer,
-    f3p: f3pReducer,
-    sps: spsReducer,
-    startingElement: startingElementReducer,
+    config: configReducer,
   },
 });
 
