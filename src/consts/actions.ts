@@ -22,6 +22,7 @@ import {
   F3,
   F3P,
   F4,
+  B1,
   B3,
   B4,
   D,
@@ -62,7 +63,7 @@ export const d_action: ActionType = {
 };
 
 export const b1_action: ActionType = {
-  ...B3,
+  ...B1,
   icon: img_b1,
 };
 
