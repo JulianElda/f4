@@ -1,6 +1,5 @@
 import { render, screen, userEvent } from "test/test-utils";
 
-import { F1, F3, XENO } from "consts/jobactions";
 import App from "./app";
 
 describe("general", () => {
@@ -33,29 +32,6 @@ describe("general", () => {
 
     const emptyElement = screen.getByText(/Nothing specified/);
     expect(emptyElement).toBeInTheDocument();
-  });
-});
-
-describe.skip("add skills to sequences", () => {
-  test("F1", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-    await user.click(screen.getByAltText(F1.name));
-    expect(screen.getByText(F1.id)).toBeInTheDocument();
-  });
-
-  test("F3", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-    await user.click(screen.getByAltText(F3.name));
-    expect(screen.getByText(F3.id)).toBeInTheDocument();
-  });
-
-  test("Xeno", async () => {
-    const user = userEvent.setup();
-    render(<App />);
-    await user.click(screen.getByAltText(XENO.name));
-    expect(screen.getByText(XENO.id)).toBeInTheDocument();
   });
 });
 

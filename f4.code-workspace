@@ -5,13 +5,9 @@
     }
   ],
   "settings": {
-    "editor.formatOnSave": true,
     "files.associations": {
       "*.css": "tailwindcss",
       "*.scss": "tailwindcss"
     }
-  },
-  "extensions": {
-    "recommendations": ["bradlc.vscode-tailwindcss"]
   }
 }
