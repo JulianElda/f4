@@ -3,7 +3,7 @@ import classes from "assets/styles/globals.module.css";
 export default function Help() {
   return (
     <div className="my-4">
-      <label className="font-semibold">Help!</label>
+      <h2 className={classes.header}>Help!</h2>
       <div className={classes.card}>
         <p>
           <a

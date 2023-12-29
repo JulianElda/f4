@@ -4,9 +4,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     fontFamily: {
-      mono: "'M PLUS 1 Code'",
-      sans: "'M PLUS 1'",
+      serif: "'Heliotrope 3'",
+      mono: "'Heliotrope 3'",
+      heading: "'Heliotrope 4'",
     },
   },
+  darkMode: "class",
   plugins: [],
 };

@@ -1,8 +1,7 @@
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { getSps, setSps } from "store/config";
 import { calculateRecast } from "consts/utils";
-
-import classes from "./spscalculator.module.css";
+import { getSps, setSps } from "store/config";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import classes from "assets/styles/globals.module.css";
 
 export default function SpSCalculator() {
   const dispatch = useAppDispatch();
@@ -17,7 +16,7 @@ export default function SpSCalculator() {
     <div>
       <label
         htmlFor="sps"
-        className="text-sm">
+        className={classes.inputlabel}>
         Spellspeed
       </label>
       <input
@@ -26,9 +25,9 @@ export default function SpSCalculator() {
         name="sps"
         value={sps}
         onChange={(event) => onChangeSps(event.target.value)}
-        className="input w-full"
+        className={classes.inputfield}
       />
-      <p className={classes.spellspeeds}>
+      <p className="grid grid-rows-3 mt-2 content-between px-2">
         <span className="text-sm">
           2.5: &nbsp;
           <label>{calculateRecast(sps, 2500).toFixed(2)}</label>

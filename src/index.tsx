@@ -1,12 +1,12 @@
+import App from "components/app/app";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-
-import "assets/styles/index.css";
-import "assets/styles/tailwind.css";
-
 import { store } from "./store/store";
-import App from "components/app/app";
+
+import "assets/styles/heliotrope.css";
+import "assets/styles/styles.css";
+import "assets/styles/tailwind.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

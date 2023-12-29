@@ -80,7 +80,7 @@ export default function Preset() {
 
   return (
     <div className="my-4">
-      <label className="font-semibold">Preset lines</label>
+      <h2 className={classes.header}>Preset lines</h2>
       <div className={classes.card}>{getPresets()}</div>
     </div>
   );

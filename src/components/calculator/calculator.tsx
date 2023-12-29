@@ -70,12 +70,10 @@ export default function Calculator() {
       {actions.length >= 1 && (
         <>
           <div className={classes.card}>
-            <p className="font-mono">{totalPotency.toFixed(2)} potency</p>
-            <p className="font-mono">{totalTime.toFixed(2)} s</p>
-            <p className="font-mono">
-              {(totalPotency / totalTime).toFixed(2)} pps
-            </p>
-            <p className="font-mono">{compareStandard()}% from standard</p>
+            <p>{totalPotency.toFixed(2)} potency</p>
+            <p>{totalTime.toFixed(2)} s</p>
+            <p>{(totalPotency / totalTime).toFixed(2)} pps</p>
+            <p>{compareStandard()}% from standard</p>
             {getDetails()}
           </div>
         </>

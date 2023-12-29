@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .link {
-  @apply text-sm cursor-pointer hover:bg-sky-100;
+  @apply text-sky-950 decoration-dotted hover:text-sky-800 hover:underline dark:text-sky-100;
 }
 
 .input {

@@ -3,7 +3,7 @@ import classes from "assets/styles/globals.module.css";
 export default function References() {
   return (
     <div className="my-4">
-      <label className="font-semibold">References</label>
+      <h2 className={classes.header}>References</h2>
       <div className={classes.card}>
         <p>
           <a

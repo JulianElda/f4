@@ -1,8 +1,7 @@
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { getActions, removeActionFromIndex } from "store/actions";
-import Action, { ActionType } from "components/action/action";
-
 import classes from "assets/styles/globals.module.css";
+import Action from "components/action/action";
+import { getActions, removeActionFromIndex } from "store/actions";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 
 /**
  * show specified line
@@ -30,28 +29,21 @@ export default function Sequence() {
     return content;
   };
 
-  const getLineNotation = function (): React.ReactNode {
-    return actions
-      .map(function (action: ActionType) {
-        return action.id;
-      })
-      .join(" ");
-  };
-
   return (
     <div className="my-4">
-      <label className="font-semibold">Casts</label>
+      <h2 className={classes.header}>Casts</h2>
       {actions.length === 0 && (
         <>
           <div className={classes.card}>
-            <p>Nothing specified, add actions from (Skills) or (Preset)</p>
+            <p>
+              Nothing specified, add actions from (Skills) or (Preset lines)
+            </p>
           </div>
         </>
       )}
       {actions.length >= 1 && (
         <>
           <div className={classes.card}>{getSequenceContent()}</div>
-          <p className="font-mono text-sm mx-2">{getLineNotation()}</p>
         </>
       )}
     </div>

@@ -1,6 +1,7 @@
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { getStartingElement, setStartingElement } from "store/config";
+import classes from "assets/styles/globals.module.css";
 import { ElementalStates } from "consts/jobactions";
+import { getStartingElement, setStartingElement } from "store/config";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 
 export default function StartElement() {
   const dispatch = useAppDispatch();
@@ -17,13 +18,13 @@ export default function StartElement() {
     <div className="w-full">
       <label
         htmlFor="startingelement"
-        className="text-sm">
+        className={classes.inputlabel}>
         Starting element
       </label>
       <select
         id="startingelement"
         name="startingelement"
-        className="w-full bg-white font-semibold input"
+        className={classes.inputfield}
         value={startingElement}
         onChange={(e) =>
           onChangeStartingElement(e.target.value as ElementalStates)
