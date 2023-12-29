@@ -69,7 +69,7 @@ export default function Calculator() {
     <>
       {actions.length >= 1 && (
         <>
-          <div className={classes.card}>
+          <div className="card">
             <p>{totalPotency.toFixed(2)} potency</p>
             <p>{totalTime.toFixed(2)} s</p>
             <p>{(totalPotency / totalTime).toFixed(2)} pps</p>

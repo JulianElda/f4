@@ -34,7 +34,7 @@ export default function Sequence() {
       <h2 className={classes.header}>Casts</h2>
       {actions.length === 0 && (
         <>
-          <div className={classes.card}>
+          <div className="card">
             <p>
               Nothing specified, add actions from (Skills) or (Preset lines)
             </p>
@@ -43,7 +43,7 @@ export default function Sequence() {
       )}
       {actions.length >= 1 && (
         <>
-          <div className={classes.card}>{getSequenceContent()}</div>
+          <div className="card">{getSequenceContent()}</div>
         </>
       )}
     </div>

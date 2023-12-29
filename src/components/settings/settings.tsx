@@ -5,9 +5,9 @@ import StartElement from "components/startelement/startelement";
 
 export default function Settings() {
   return (
-    <div className="my-4 space-y-2">
+    <div className="my-4">
       <h2 className={classes.header}>Settings</h2>
-      <div className={classes.card + " space-y-4"}>
+      <div className="card space-y-4">
         <StartElement />
         <SpSCalculator />
         <F3PAdjust />

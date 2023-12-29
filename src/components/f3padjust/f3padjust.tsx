@@ -18,7 +18,7 @@ export default function F3PAdjust() {
         name="f3p"
         checked={f3pAdjust}
         onChange={(event) => onChangeF3PAdjust(event.target.checked)}
-        className={classes.input}
+        className="rounded-md border-gray-500 shadow-sm focus:border-sky-300 focus:ring-sky-300"
       />
       <label
         htmlFor="f3p"

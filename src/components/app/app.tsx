@@ -1,12 +1,12 @@
 import ActionList from "components/actionlist/actionlist";
 import Calculator from "components/calculator/calculator";
+import Footer from "components/footer/footer";
 import Header from "components/header/header";
 import Help from "components/help/help";
 import Preset from "components/preset/preset";
 import References from "components/references/references";
 import Sequence from "components/sequence/sequence";
 import Settings from "components/settings/settings";
-
 import classes from "./app.module.css";
 
 export default function App() {
@@ -26,6 +26,7 @@ export default function App() {
           <References />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

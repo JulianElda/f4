@@ -24,7 +24,7 @@ export default function StartElement() {
       <select
         id="startingelement"
         name="startingelement"
-        className={classes.inputfield}
+        className="inputfield"
         value={startingElement}
         onChange={(e) =>
           onChangeStartingElement(e.target.value as ElementalStates)

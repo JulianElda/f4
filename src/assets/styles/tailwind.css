@@ -3,9 +3,19 @@
 @tailwind utilities;
 
 .link {
-  @apply text-sky-950 decoration-dotted hover:text-sky-800 hover:underline dark:text-sky-100;
+  @apply text-sky-950 decoration-dotted
+    hover:text-sky-800 hover:underline dark:text-sky-100;
 }
 
-.input {
-  @apply shadow-sm rounded-md focus:ring-sky-500 focus:border-sky-500 border-gray-500;
+.inputfield {
+  @apply block w-full
+    rounded-md bg-white p-2 text-gray-900 ring-1
+    ring-inset ring-gray-300 focus:ring-1
+    focus:ring-inset dark:bg-slate-700
+    dark:text-gray-100;
+}
+
+.card {
+  @apply mt-1 space-y-1
+    rounded-md bg-white p-2 shadow dark:bg-slate-700;
 }

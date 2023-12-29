@@ -81,7 +81,7 @@ export default function Preset() {
   return (
     <div className="my-4">
       <h2 className={classes.header}>Preset lines</h2>
-      <div className={classes.card}>{getPresets()}</div>
+      <div className="card">{getPresets()}</div>
     </div>
   );
 }

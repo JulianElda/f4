@@ -25,9 +25,9 @@ export default function SpSCalculator() {
         name="sps"
         value={sps}
         onChange={(event) => onChangeSps(event.target.value)}
-        className={classes.inputfield}
+        className="inputfield"
       />
-      <p className="grid grid-rows-3 mt-2 content-between px-2">
+      <p className="mt-2 grid grid-rows-3 content-between px-2">
         <span className="text-sm">
           2.5: &nbsp;
           <label>{calculateRecast(sps, 2500).toFixed(2)}</label>

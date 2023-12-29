@@ -32,7 +32,7 @@ export default function ActionList() {
   return (
     <div className="my-4">
       <h2 className={classes.header}>Skills</h2>
-      <div className={classes.card}>
+      <div className="card">
         <div className="">
           <Action
             action={f1_action}

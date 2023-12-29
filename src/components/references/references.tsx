@@ -4,7 +4,7 @@ export default function References() {
   return (
     <div className="my-4">
       <h2 className={classes.header}>References</h2>
-      <div className={classes.card}>
+      <div className="card">
         <p>
           <a
             className="link star"
