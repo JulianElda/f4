@@ -7,19 +7,18 @@ import Preset from "components/preset/preset";
 import References from "components/references/references";
 import Sequence from "components/sequence/sequence";
 import Settings from "components/settings/settings";
-import classes from "./app.module.css";
 
 export default function App() {
   return (
-    <div className={classes.app}>
+    <div className="mx-auto flex min-h-full w-full max-w-4xl flex-col sm:pt-4">
       <Header />
-      <div className={classes.container}>
-        <div className={classes.column}>
+      <div className="grid grid-cols-2 md:space-x-8">
+        <div className="col-span-2 md:col-span-1">
           <ActionList />
           <Sequence />
           <Calculator />
         </div>
-        <div className={classes.column}>
+        <div className="col-span-2 md:col-span-1">
           <Settings />
           <Preset />
           <Help />

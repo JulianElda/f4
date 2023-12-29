@@ -1,4 +1,4 @@
-[Website](https://julianelda.github.io/f4/)
+[Website](https://julianelda.io/f4/)
 
 # What's this?
 
