@@ -1,6 +1,6 @@
 import { Card } from "@julianelda/scratchpad";
-import classes from "assets/styles/globals.module.css";
 import Action, { ActionType } from "components/action/action";
+import SectionHeader from "components/sectionheader/sectionheader";
 import {
   b1_action,
   b3_action,
@@ -32,7 +32,7 @@ export default function ActionList() {
 
   return (
     <div className="my-4">
-      <h2 className={classes.header}>Skills</h2>
+      <SectionHeader text="Skills" />
       <Card>
         <Action
           action={f1_action}

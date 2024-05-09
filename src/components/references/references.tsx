@@ -1,10 +1,10 @@
 import { Card, Hyperlink } from "@julianelda/scratchpad";
-import classes from "assets/styles/globals.module.css";
+import SectionHeader from "components/sectionheader/sectionheader";
 
 export default function References() {
   return (
     <div className="my-4">
-      <h2 className={classes.header}>References</h2>
+      <SectionHeader text="References" />
       <Card>
         <div className="space-y-1">
           <p>

@@ -1,7 +1,3 @@
 .clickable {
   @apply cursor-pointer underline decoration-dotted hover:decoration-solid;
 }
-
-.header {
-  @apply font-heading text-xl font-semibold;
-}

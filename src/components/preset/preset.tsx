@@ -1,6 +1,7 @@
 import { Card } from "@julianelda/scratchpad";
 import classes from "assets/styles/globals.module.css";
 import { ActionType } from "components/action/action";
+import SectionHeader from "components/sectionheader/sectionheader";
 import { ElementalStates } from "consts/jobactions";
 import {
   I5_3xF4_TRANSPOSE,
@@ -79,7 +80,7 @@ export default function Preset() {
 
   return (
     <div className="my-4">
-      <h2 className={classes.header}>Preset lines</h2>
+      <SectionHeader text="Preset lines" />
       <Card>
         <div className="space-y-1">{getPresets()}</div>
       </Card>

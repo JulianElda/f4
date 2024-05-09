@@ -1,6 +1,6 @@
 import { Card } from "@julianelda/scratchpad";
-import classes from "assets/styles/globals.module.css";
 import Action from "components/action/action";
+import SectionHeader from "components/sectionheader/sectionheader";
 import { getActions, removeActionFromIndex } from "store/actions";
 import { useAppDispatch, useAppSelector } from "store/hooks";
 
@@ -32,7 +32,7 @@ export default function Sequence() {
 
   return (
     <div className="my-4">
-      <h2 className={classes.header}>Casts</h2>
+      <SectionHeader text="Casts" />
       {actions.length === 0 && (
         <Card>
           <div className="space-y-1">
