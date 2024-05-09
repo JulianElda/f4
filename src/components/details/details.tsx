@@ -1,7 +1,5 @@
 import { ElementalStates } from "consts/jobactions";
 
-import classes from "./details.module.css";
-
 export type DetailedAction = {
   name: string;
   filler: boolean;
@@ -91,7 +89,7 @@ function Detail(props: DetailedAction) {
     if (props.filler) return <></>;
     else
       return (
-        <div className={classes.details}>
+        <div className="px-2 text-sm">
           <div>
             <span className="font-semibold">{props.name}</span>
           </div>

@@ -1,3 +1,4 @@
+import { Card } from "@julianelda/scratchpad";
 import classes from "assets/styles/globals.module.css";
 import F3PAdjust from "components/f3padjust/f3padjust";
 import SpSCalculator from "components/spscalculator/spscalculator";
@@ -7,11 +8,13 @@ export default function Settings() {
   return (
     <div className="my-4">
       <h2 className={classes.header}>Settings</h2>
-      <div className="card space-y-4">
-        <StartElement />
-        <SpSCalculator />
-        <F3PAdjust />
-      </div>
+      <Card>
+        <div className="space-y-2">
+          <StartElement />
+          <SpSCalculator />
+          <F3PAdjust />
+        </div>
+      </Card>
     </div>
   );
 }

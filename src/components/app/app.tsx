@@ -1,6 +1,6 @@
+import { Footer, useDarkMode } from "@julianelda/scratchpad";
 import ActionList from "components/actionlist/actionlist";
 import Calculator from "components/calculator/calculator";
-import Footer from "components/footer/footer";
 import Header from "components/header/header";
 import Help from "components/help/help";
 import Preset from "components/preset/preset";
@@ -9,6 +9,8 @@ import Sequence from "components/sequence/sequence";
 import Settings from "components/settings/settings";
 
 export default function App() {
+  const { isDarkTheme, toggleDarkTheme } = useDarkMode();
+
   return (
     <div className="mx-auto flex min-h-full w-full max-w-4xl flex-col sm:pt-4">
       <Header />
@@ -25,7 +27,12 @@ export default function App() {
           <References />
         </div>
       </div>
-      <Footer />
+      <Footer
+        label="Julius Polar@GitHub"
+        link="https://github.com/JulianElda/f4"
+        darkTheme={isDarkTheme}
+        toggleDarkTheme={toggleDarkTheme}
+      />
     </div>
   );
 }

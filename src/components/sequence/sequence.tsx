@@ -1,3 +1,4 @@
+import { Card } from "@julianelda/scratchpad";
 import classes from "assets/styles/globals.module.css";
 import Action from "components/action/action";
 import { getActions, removeActionFromIndex } from "store/actions";
@@ -33,18 +34,18 @@ export default function Sequence() {
     <div className="my-4">
       <h2 className={classes.header}>Casts</h2>
       {actions.length === 0 && (
-        <>
-          <div className="card">
+        <Card>
+          <div className="space-y-1">
             <p>
               Nothing specified, add actions from (Skills) or (Preset lines)
             </p>
           </div>
-        </>
+        </Card>
       )}
       {actions.length >= 1 && (
-        <>
-          <div className="card">{getSequenceContent()}</div>
-        </>
+        <Card>
+          <div className="space-y-1">{getSequenceContent()}</div>
+        </Card>
       )}
     </div>
   );

@@ -1,27 +1,26 @@
-import { render, screen } from "test/test-utils";
-import { Provider } from "react-redux";
-
-import { store } from "store/store";
-import ActionList from "./actionlist";
 import {
+  b1_action,
+  b3_action,
+  b4_action,
+  d_action,
   f1_action,
   f3_action,
   f3p_action,
   f4_action,
-  d_action,
-  b1_action,
-  b3_action,
-  b4_action,
-  pd_action,
-  t3p_action,
-  xeno_action,
-  tpose_action,
-  swiftcast_action,
-  triplecast_action,
-  manafont_action,
-  lucid_action,
   filler_action,
+  lucid_action,
+  manafont_action,
+  pd_action,
+  swiftcast_action,
+  t3p_action,
+  tpose_action,
+  triplecast_action,
+  xeno_action,
 } from "consts/actions";
+import { Provider } from "react-redux";
+import { store } from "store/store";
+import { render, screen } from "test/test-utils";
+import ActionList from "./actionlist";
 
 test("render actions", async () => {
   render(

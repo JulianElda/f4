@@ -2422,6 +2422,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@julianelda/scratchpad@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@julianelda/scratchpad@npm:1.2.0"
+  peerDependencies:
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  checksum: 10c0/8014ca34a4bb4612d9bdb90d79dc73073c96d96e71261952b7b3d5da72dbbafc22a2de01cdeda76127970e1767754248f72117dbacc4beceda2daa2f72c7adba
+  languageName: node
+  linkType: hard
+
 "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1":
   version: 5.1.1-v1
   resolution: "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1"
@@ -2721,6 +2731,17 @@ __metadata:
   version: 0.27.8
   resolution: "@sinclair/typebox@npm:0.27.8"
   checksum: 10c0/ef6351ae073c45c2ac89494dbb3e1f87cc60a93ce4cde797b782812b6f97da0d620ae81973f104b43c9b7eaa789ad20ba4f6a1359f1cc62f63729a55a7d22d4e
+  languageName: node
+  linkType: hard
+
+"@tailwindcss/forms@npm:^0.5.7":
+  version: 0.5.7
+  resolution: "@tailwindcss/forms@npm:0.5.7"
+  dependencies:
+    mini-svg-data-uri: "npm:^1.2.3"
+  peerDependencies:
+    tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1"
+  checksum: 10c0/cd29e0c978402ae87a923ae802dcff43f7b050595666cb067321cac2e37a52f61b9d73385cb0a10455548581ddd0d3886815bd6c64a1da06247c0057fa9f4601
   languageName: node
   linkType: hard
 
@@ -5399,7 +5420,9 @@ __metadata:
     "@fortawesome/fontawesome-svg-core": "npm:^6.5.2"
     "@fortawesome/free-regular-svg-icons": "npm:^6.5.2"
     "@fortawesome/react-fontawesome": "npm:^0.2.0"
+    "@julianelda/scratchpad": "npm:^1.2.0"
     "@reduxjs/toolkit": "npm:^2.2.4"
+    "@tailwindcss/forms": "npm:^0.5.7"
     "@testing-library/dom": "npm:^10.1.0"
     "@testing-library/jest-dom": "npm:^6.4.5"
     "@testing-library/react": "npm:^15.0.7"
@@ -7065,6 +7088,15 @@ __metadata:
   version: 1.0.1
   resolution: "min-indent@npm:1.0.1"
   checksum: 10c0/7e207bd5c20401b292de291f02913230cb1163abca162044f7db1d951fa245b174dc00869d40dd9a9f32a885ad6a5f3e767ee104cf278f399cb4e92d3f582d5c
+  languageName: node
+  linkType: hard
+
+"mini-svg-data-uri@npm:^1.2.3":
+  version: 1.4.4
+  resolution: "mini-svg-data-uri@npm:1.4.4"
+  bin:
+    mini-svg-data-uri: cli.js
+  checksum: 10c0/24545fa30b5a45449241bf19c25b8bc37594b63ec06401b3d563bd1c2e8a6abb7c18741f8b354e0064baa63c291be214154bf3a66f201ae71dfab3cc1a5e3191
   languageName: node
   linkType: hard
 

@@ -1,5 +1,4 @@
 import { render, screen, userEvent } from "test/test-utils";
-
 import App from "./app";
 
 describe("general", () => {

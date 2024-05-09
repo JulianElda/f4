@@ -1,22 +1,21 @@
+import { DetailedAction } from "components/details/details";
 import {
+  ActionElements,
+  B1,
+  B3,
+  CASTER_TAX,
+  ElementalStates,
   F1,
   F3,
   F3P,
-  B1,
-  B3,
-  PD,
-  TPOSE,
-  SWIFTCAST,
-  TRIPLECAST,
-  ElementalStates,
   JobActionType,
-  ActionElements,
-  CASTER_TAX,
   MULTIPLIER_CAST,
   MULTIPLIER_POTENCY,
+  PD,
+  SWIFTCAST,
+  TPOSE,
+  TRIPLECAST,
 } from "consts/jobactions";
-
-import { DetailedAction } from "components/details/details";
 
 export const calculateF3Potency = function (howMany: number) {
   // 40% chance of producing F3P

@@ -5,7 +5,3 @@
 .header {
   @apply font-heading text-xl font-semibold;
 }
-
-.inputlabel {
-  @apply font-heading;
-}

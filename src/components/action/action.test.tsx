@@ -1,6 +1,5 @@
-import { render, screen, userEvent } from "test/test-utils";
-
 import { f3_action } from "consts/actions";
+import { render, screen, userEvent } from "test/test-utils";
 import Action from "./action";
 
 test("render action image", async () => {

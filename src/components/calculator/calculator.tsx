@@ -1,15 +1,14 @@
-import { useState } from "react";
-import { useAppSelector } from "store/hooks";
-import { getActions } from "store/actions";
-import { getF3p, getSps, getStartingElement } from "store/config";
-
-import { startCalculation } from "consts/utils";
-import { N0_STANDARD_ROTATION } from "consts/lines";
-import { ElementalStates } from "consts/jobactions";
+import { Card } from "@julianelda/scratchpad";
+import classes from "assets/styles/globals.module.css";
 import Details from "components/details/details";
 import F3PDetail from "components/f3pdetail/f3pdetail";
-
-import classes from "assets/styles/globals.module.css";
+import { ElementalStates } from "consts/jobactions";
+import { N0_STANDARD_ROTATION } from "consts/lines";
+import { startCalculation } from "consts/utils";
+import { useState } from "react";
+import { getActions } from "store/actions";
+import { getF3p, getSps, getStartingElement } from "store/config";
+import { useAppSelector } from "store/hooks";
 
 export default function Calculator() {
   const actions = useAppSelector(getActions);
@@ -68,15 +67,13 @@ export default function Calculator() {
   return (
     <>
       {actions.length >= 1 && (
-        <>
-          <div className="card">
-            <p>{totalPotency.toFixed(2)} potency</p>
-            <p>{totalTime.toFixed(2)} s</p>
-            <p>{(totalPotency / totalTime).toFixed(2)} pps</p>
-            <p>{compareStandard()}% from standard</p>
-            {getDetails()}
-          </div>
-        </>
+        <Card>
+          <p>{totalPotency.toFixed(2)} potency</p>
+          <p>{totalTime.toFixed(2)} s</p>
+          <p>{(totalPotency / totalTime).toFixed(2)} pps</p>
+          <p>{compareStandard()}% from standard</p>
+          {getDetails()}
+        </Card>
       )}
     </>
   );

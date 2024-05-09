@@ -15,7 +15,6 @@ import img_triple from "assets/images/triplecast.png";
 import img_mf from "assets/images/mf.png";
 import img_lucid from "assets/images/lucid.png";
 import img_filler from "assets/images/filler.png";
-
 import { ActionType } from "components/action/action";
 import {
   F1,

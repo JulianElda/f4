@@ -1,17 +1,16 @@
 import {
-  MULTIPLIER_POTENCY,
-  ElementalStates,
   ActionElements,
+  ElementalStates,
   F3,
+  MULTIPLIER_POTENCY,
 } from "consts/jobactions";
 import { calculateRecast } from "consts/utils";
-
-import classes from "./f3pdetail.module.css";
 
 type F3PDetailProps = {
   f3PProducers: number;
   sps: number;
 };
+
 export default function F3PDetail(props: F3PDetailProps) {
   // 40% chance of producing F3P
   const f3pProc = 0.4;
@@ -26,7 +25,7 @@ export default function F3PDetail(props: F3PDetailProps) {
     );
 
   return (
-    <div className={classes.f3pdetail}>
+    <div className="mt-2 px-2 text-xs">
       <div>
         <span className="font-semibold">
           Fire III producers: {props.f3PProducers}

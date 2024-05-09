@@ -1,6 +1,6 @@
-import { useAppDispatch, useAppSelector } from "store/hooks";
+import { Checkbox } from "@julianelda/scratchpad";
 import { getF3p, setF3p } from "store/config";
-import classes from "assets/styles/globals.module.css";
+import { useAppDispatch, useAppSelector } from "store/hooks";
 
 export default function F3PAdjust() {
   const dispatch = useAppDispatch();
@@ -12,19 +12,12 @@ export default function F3PAdjust() {
 
   return (
     <div className="w-full">
-      <input
-        type="checkbox"
+      <Checkbox
         id="f3p"
-        name="f3p"
-        checked={f3pAdjust}
-        onChange={(event) => onChangeF3PAdjust(event.target.checked)}
-        className="rounded-md border-gray-500 shadow-sm focus:border-sky-300 focus:ring-sky-300"
+        label="include estimated F3P pps"
+        value={f3pAdjust}
+        onChange={(value) => onChangeF3PAdjust(value)}
       />
-      <label
-        htmlFor="f3p"
-        className={classes.inputlabel + " ml-1"}>
-        include estimated F3P pps
-      </label>
     </div>
   );
 }

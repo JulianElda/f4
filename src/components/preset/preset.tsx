@@ -1,22 +1,21 @@
-import { useAppDispatch } from "store/hooks";
-import { setActions } from "store/actions";
-import { setStartingElement } from "store/config";
-
+import { Card } from "@julianelda/scratchpad";
+import classes from "assets/styles/globals.module.css";
+import { ActionType } from "components/action/action";
 import { ElementalStates } from "consts/jobactions";
 import {
+  I5_3xF4_TRANSPOSE,
   N0_STANDARD_ROTATION,
-  N3_STANDARD_UI_PD_SKIP,
-  N4_STANDARD_5F4,
   N10_4F4,
+  N111_DOUBLE_TRANSPOSE_F3P,
   N13_5F4,
   N15_DOUBLE_PARADOX,
   N16_1_DOUBLE_PARADOX_AF2,
-  N111_DOUBLE_TRANSPOSE_F3P,
-  I5_3xF4_TRANSPOSE,
+  N3_STANDARD_UI_PD_SKIP,
+  N4_STANDARD_5F4,
 } from "consts/lines";
-import { ActionType } from "components/action/action";
-
-import classes from "assets/styles/globals.module.css";
+import { setActions } from "store/actions";
+import { setStartingElement } from "store/config";
+import { useAppDispatch } from "store/hooks";
 
 type PresetLine = {
   line: ActionType[];
@@ -81,7 +80,9 @@ export default function Preset() {
   return (
     <div className="my-4">
       <h2 className={classes.header}>Preset lines</h2>
-      <div className="card">{getPresets()}</div>
+      <Card>
+        <div className="space-y-1">{getPresets()}</div>
+      </Card>
     </div>
   );
 }

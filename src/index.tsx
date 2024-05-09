@@ -4,9 +4,8 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
-import "assets/styles/heliotrope.css";
-import "assets/styles/styles.css";
-import "assets/styles/tailwind.css";
+import "@julianelda/scratchpad/style.css";
+import "./tailwind.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

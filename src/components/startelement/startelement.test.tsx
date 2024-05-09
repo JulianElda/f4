@@ -1,6 +1,5 @@
-import { render, screen, userEvent } from "test/test-utils";
-
 import { ElementalStates } from "consts/jobactions";
+import { render, screen, userEvent } from "test/test-utils";
 import StartElement from "./startelement";
 
 test("select starting element", async () => {
