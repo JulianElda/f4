@@ -13,5 +13,4 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/test/test-setup.ts",
   },
-  base: "/f4/",
 });
